@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>The Hopby</title>
+</head>
+<body>
+<div th:switch="${hooby}">
+    <h2 th:case="null">No hobbies</h2>
+    <div th:case="*">
+        <h2> Hobbies </h2>
+        <table>
+            <thread>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thread>
+            <tbody>
+                <tr th:each="hobby : ${hobbies}">
+                    <td th:text="${hobby.name}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
