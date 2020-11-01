@@ -24,23 +24,24 @@ public class HobbyController {
 
     @RequestMapping("/")
     public String Home(Model model) {
-        model.addAttribute("hobby", hopbyService.findAll());
+        model.addAttribute("hobby", hopbyService.findAllHobby());
         return "Velkomin";
     }
 
     @RequestMapping(value="/addhobby", method= RequestMethod.POST)
     public String addHobby(@Valid Hobby hobby, BindingResult result, Model model) {
+        System.out.println(hobby.getName());
         if(result.hasErrors()){
             return "add-hobby";
         }
         hopbyService.save(hobby);
-        model.addAttribute("hobby", hopbyService.findAll());
+        model.addAttribute("hobby", hopbyService.findAllHobby());
         return "Velkomin";
     }
 
     @RequestMapping(value="/addhobby", method = RequestMethod.GET)
     public String addHobbyForm(Model model){
-
+        model.addAttribute("hobby", new Hobby());
         return "add-hobby";
     }
 
@@ -48,7 +49,7 @@ public class HobbyController {
     public String deleteHobby(@PathVariable("id") long id, Model model) {
         Hobby hobby = hopbyService.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid hobby id"));
         hopbyService.delete(hobby);
-        model.addAttribute("hobby", hopbyService.findAll());
+        model.addAttribute("hobby", hopbyService.findAllHobby());
         return "Velkomin";
     }
 

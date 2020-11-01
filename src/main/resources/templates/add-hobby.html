@@ -7,7 +7,7 @@
 <body>
 <form action="#" th:action="@{/addhobby}" th:object="${hobby}" method="post">
     <label for="name">Name</label>
-    <input type="text" id="name" placeholder="Name">
+    <input type="text" th:field="*{name}" id="name" placeholder="Name">
     <input type="submit" value="Add Hobby">
 </form>
 

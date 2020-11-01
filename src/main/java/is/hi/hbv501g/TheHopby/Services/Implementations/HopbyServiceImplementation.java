@@ -31,7 +31,7 @@ public class HopbyServiceImplementation implements HopbyService {
     }
 
     @Override
-    public List<Hobby> findAll() {
+    public List<Hobby> findAllHobby() {
         return hobbyRepository.findAll();
     }
 
