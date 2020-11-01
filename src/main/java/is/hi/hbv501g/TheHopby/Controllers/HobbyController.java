@@ -1,6 +1,7 @@
 package is.hi.hbv501g.TheHopby.Controllers;
 
 import is.hi.hbv501g.TheHopby.Entities.Hobby;
+import is.hi.hbv501g.TheHopby.Entities.Session;
 import is.hi.hbv501g.TheHopby.Services.HopbyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,6 +50,12 @@ public class HobbyController {
     public String addHobbyForm(Model model){
         model.addAttribute("hobby", new Hobby());
         return "add-hobby";
+    }
+
+    @RequestMapping(value="/hobby/{id}", method = RequestMethod.GET)
+    public String goToSessions(Model model){
+        model.addAttribute("session", new Session());
+        return "SessionOverview";
     }
 
     @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
