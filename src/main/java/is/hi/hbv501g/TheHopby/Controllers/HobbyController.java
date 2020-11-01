@@ -12,18 +12,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.net.URL;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 @Controller
-public class HobbyController<s1> {
+public class HobbyController {
 
     private boolean fyrsta = true;
     private HopbyService hopbyService;
+
 
     @Autowired
     public HobbyController(HopbyService hService) {
@@ -39,16 +42,7 @@ public class HobbyController<s1> {
         return "Velkomin";
     }
 
-    @RequestMapping(value = "/addhobby", method = RequestMethod.POST)
-    public String addHobby(@Valid Hobby hobby, BindingResult result, Model model) {
-        System.out.println(hobby.getName());
-        if (result.hasErrors()) {
-            return "add-hobby";
-        }
-        hopbyService.save(hobby);
-        model.addAttribute("hobby", hopbyService.findAllHobby());
-        return "Velkomin";
-    }
+
 
     @RequestMapping(value = "/hobby/{id}", method = RequestMethod.GET)
     public String goToSessions(@PathVariable("id") long id, Model model) {
