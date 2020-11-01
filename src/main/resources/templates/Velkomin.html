@@ -13,15 +13,18 @@
             <thread>
                 <tr>
                     <th>Name</th>
+                    <th>Delete</th>
                 </tr>
             </thread>
             <tbody>
                 <tr th:each="hobby : ${hobbies}">
                     <td th:text="${hobby.name}"></td>
+                    <td><a th:href="@{/delete/{id}{id=${hobby.id})}">Delete</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <p><a href="/addhobby">Add a new hobby</a></p>
 </div>
 
 </body>
