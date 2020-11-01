@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org" lang="is">
 <head>
     <meta charset="UTF-8">
     <title>The Hopby</title>
 </head>
 <body>
-<div th:switch="${hooby}">
+<div th:switch="${hobby}">
     <h2 th:case="null">No hobbies</h2>
     <div th:case="*">
         <h2> Hobbies </h2>
@@ -17,9 +17,9 @@
                 </tr>
             </thread>
             <tbody>
-                <tr th:each="hobby : ${hobbies}">
+                <tr th:each="hobby : ${hobby}">
                     <td th:text="${hobby.name}"></td>
-                    <td><a th:href="@{/delete/{id}{id=${hobby.id})}">Delete</a></td>
+                    <!--<td><a th:href="@{/delete/{id}{id=${hobby.id})}">Delete</a></td>-->
                 </tr>
             </tbody>
         </table>

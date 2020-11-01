@@ -28,10 +28,10 @@ public class HobbyController {
         return "Velkomin";
     }
 
-    @RequestMapping(value="/add-hobby", method= RequestMethod.POST)
+    @RequestMapping(value="/addhobby", method= RequestMethod.POST)
     public String addHobby(@Valid Hobby hobby, BindingResult result, Model model) {
         if(result.hasErrors()){
-            return "loginPage";
+            return "add-hobby";
         }
         hopbyService.save(hobby);
         model.addAttribute("hobby", hopbyService.findAll());
@@ -40,6 +40,7 @@ public class HobbyController {
 
     @RequestMapping(value="/addhobby", method = RequestMethod.GET)
     public String addHobbyForm(Model model){
+
         return "add-hobby";
     }
 

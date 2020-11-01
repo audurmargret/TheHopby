@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,8 +7,7 @@
 <body>
 <form action="#" th:action="@{/addhobby}" th:object="${hobby}" method="post">
     <label for="name">Name</label>
-    <input type="text" th:field="*{name}" id="name" placeholder="Name">
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <input type="text" id="name" placeholder="Name">
     <input type="submit" value="Add Hobby">
 </form>
 
