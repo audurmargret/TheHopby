@@ -9,7 +9,6 @@ import javax.persistence.Id;
 public class Hobby {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name;
@@ -17,8 +16,9 @@ public class Hobby {
     public Hobby(){
     }
 
-    public Hobby(String name) {
+    public Hobby(String name, long id) {
         this.name = name;
+        this.id = id;
     }
 
     public long getId() {

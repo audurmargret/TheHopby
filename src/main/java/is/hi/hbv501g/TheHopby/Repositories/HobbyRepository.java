@@ -11,7 +11,7 @@ public interface HobbyRepository extends JpaRepository<Hobby, Long>{
 
 
     Hobby save(Hobby hobby);
-    void delete(Hobby hobby);
+    //void delete(Hobby hobby);
     List<Hobby> findAll();
     List<Hobby> findByName(String name);
     Optional<Hobby> findById(long id);

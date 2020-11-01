@@ -2,6 +2,8 @@ package is.hi.hbv501g.TheHopby.Entities;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,24 +13,23 @@ public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String title;
     private String location;
-    private Date date;
-    private Time time;
+    private LocalDate date;
+    private LocalTime time;
     @OneToMany
     private List<User> users;
     private int slotsAvailable;
     private int slots;
-    @ManyToOne
-    private Hobby hobby;
+    private long hobbyId;
     private String description;
 
     public Session() {
     }
 
-    public Session(String title, String location, Date date, Time time, int slots, Hobby hobby, String description) {
+    public Session(String title, String location, LocalDate date, LocalTime time, int slots, long hobbyId, String description) {
         this.title = title;
         this.location = location;
         this.date = date;
@@ -36,11 +37,11 @@ public class Session {
         users = new ArrayList<User>();
         slotsAvailable = slots;
         this.slots = slots;
-        this.hobby = hobby;
+        this.hobbyId = hobbyId;
         this.description = description;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -64,19 +65,19 @@ public class Session {
         this.location = location;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
@@ -104,12 +105,12 @@ public class Session {
         this.slots = slots;
     }
 
-    public Hobby getHobby() {
-        return hobby;
+    public long getHobbyId() {
+        return hobbyId;
     }
 
-    public void setHobby(Hobby hobby) {
-        this.hobby = hobby;
+    public void setHobbyId(long hobbyId) {
+        this.hobbyId = hobbyId;
     }
 
     public String getDescription() {
