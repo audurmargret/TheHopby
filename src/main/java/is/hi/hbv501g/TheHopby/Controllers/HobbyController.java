@@ -24,6 +24,12 @@ public class HobbyController {
 
     @RequestMapping("/")
     public String Home(Model model) {
+        Hobby football = new Hobby("Football");
+        Hobby basketball = new Hobby("Basketball");
+        Hobby hiking = new Hobby("Hiking");
+        hopbyService.save(football);
+        hopbyService.save(basketball);
+        hopbyService.save(hiking);
         model.addAttribute("hobby", hopbyService.findAllHobby());
         return "Velkomin";
     }

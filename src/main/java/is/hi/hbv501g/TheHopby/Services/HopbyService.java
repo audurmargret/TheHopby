@@ -14,4 +14,5 @@ public interface HopbyService {
     public List<Hobby> findByName(String name);
     public Optional<Hobby> findById(long id);
 
+
 }
