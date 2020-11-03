@@ -1,5 +1,7 @@
 package is.hi.hbv501g.TheHopby.Entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -17,6 +19,7 @@ public class Session {
 
     private String title;
     private String location;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
     private LocalTime time;
     @OneToMany

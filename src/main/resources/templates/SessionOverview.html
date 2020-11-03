@@ -30,15 +30,16 @@
                 <td th:text="${sessionss.hobbyId}"></td>
                 <td th:text="${sessionss.id}"></td>
                 <td th:text="${sessionss.location}"></td>
-                <td th:text="${sessionss.date}"></td>
-                <td th:text="${sessionss.time}"></td>
+                <td th:date="${sessionss.date}"></td>
+                <td th:time="${sessionss.time}"></td>
                 <td th:text="${sessionss.slotsAvailable}"></td>
                 <td th:text="${sessionss.slots}"></td>
                 <td th:text="${sessionss.description}"></td>
             </tr>
             </tbody>
         </table>
-        <p><a href="AddSession.html">Add a new session</a></p>
+        <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
+        <p><a href="/">Back</a></p>
     </div>
 </div>
 

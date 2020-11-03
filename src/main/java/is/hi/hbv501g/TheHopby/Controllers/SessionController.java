@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,16 +30,15 @@ public class SessionController {
         return "AddSession";
     }
 
+
     @RequestMapping(value = "/hobby/addSession", method = RequestMethod.POST)
-    public String addHobby(@Valid Session session, BindingResult result, Model model) {
+    public String addHobby(@Valid @ModelAttribute("sessions") Session session, BindingResult result, Model model) {
         if (result.hasErrors()) {
             System.out.println("halló");
+            System.out.println(result.getFieldError());
             return "AddSession";
         }
         hopbyService.save(session);
-        System.out.println(session);
-        System.out.println(session.getTitle() + session.getDescription() + session.getLocation() + session.getHobbyId());
-        System.out.println(hopbyService.findSessionByHobby(1));
         model.addAttribute("sessions", hopbyService.findSessionByHobby(1));
         return "SessionOverview";
     }

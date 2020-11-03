@@ -5,23 +5,21 @@
     <title>Hopby - Add sessions</title>
 </head>
 <body>
-<form action="#" th:action="@{/hobby/addSession}" th:object="${session}" method="post">
+<form action="#" th:action="@{/hobby/addSession}" th:object="${sessions}" method="post">
     <label for="title">Title</label>
-    <input type="text" id="title" placeholder="Title">
+    <input type="text" th:field="*{title}" id="title" placeholder="Title">
     <label for="location">Location</label>
-    <input type="text" id="location" placeholder="Location">
+    <input type="text" th:field="*{location}" id="location" placeholder="Location">
     <label for="date">Date</label>
-    <input type="date" id="date" placeholder="Date">
+    <input type="date" th:field="*{date}" id="date" placeholder="Date">
     <label for="time">Time</label>
-    <input type="time" id="time" placeholder="time">
+    <input type="time" th:field="*{time}" id="time" placeholder="time">
     <label for="slots">Slots</label>
-    <input type="number" id="slots" placeholder="Slots">
+    <input type="number" th:field="*{slots}" id="slots" placeholder="Slots">
     <label for="hobbyId">HobbyId</label>
-    <input type="number" id="hobbyId" placeholder="HobbyId">
+    <input type="number" th:field="*{hobbyId}" id="hobbyId" placeholder="HobbyId">
     <label for="description">Description</label>
-    <input type="text" id="description" placeholder="Description">
-
-<!--String title, String location, LocalDate date, LocalTime time, int slots, long hobbyId, String description-->
+    <input type="text" th:field="*{description}" id="description" placeholder="Description">
 
     <input type="submit" value="Add Session">
 </form>
