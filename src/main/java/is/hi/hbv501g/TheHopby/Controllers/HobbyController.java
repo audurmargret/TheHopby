@@ -51,6 +51,12 @@ public class HobbyController {
         return "SessionOverview";
     }
 
+    @RequestMapping(value="/hobby/all", method = RequestMethod.GET)
+    public String goToAllSessions(Model model){
+        model.addAttribute("sessions", hopbyService.findAllSession());
+        return "SessionOverview";
+    }
+
     @RequestMapping("/login")
     public String LoginPage() {
         return "LoginPage";

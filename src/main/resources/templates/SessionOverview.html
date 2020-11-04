@@ -36,7 +36,7 @@
                 <td th:text="${sessionss.slotsAvailable}"></td>
                 <td th:text="${sessionss.slots}"></td>
                 <td th:text="${sessionss.description}"></td>
-                <td><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></td>
+                <td><a th:href="@{/openSession/{id}(id=${sessionss.id})}">Open</a></td>
             </tr>
             </tbody>
         </table>

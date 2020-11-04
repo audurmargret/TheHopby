@@ -46,7 +46,7 @@ public class SessionController {
     }
 
     // Laga til að fara til baka á rétta síðu!!
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/openSession/{id}", method = RequestMethod.GET)
     public String deleteSession(@PathVariable("id") long id, Model model) {
         System.out.println("session: " + hopbyService.findSessionById(id));
         Session session = hopbyService.findSessionById(id);

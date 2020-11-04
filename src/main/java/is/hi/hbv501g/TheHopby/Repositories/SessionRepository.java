@@ -13,6 +13,9 @@ public interface SessionRepository extends JpaRepository<Hobby, Long> {
 
     Session save(Session session);
 
+    @Query(value="SELECT p FROM Session p")
+    List<Session> findAllSession();
+
     @Query(value = "SELECT p FROM Session p WHERE p.hobbyId = ?1")
     List<Session> findSessionByHobby(long id);
 

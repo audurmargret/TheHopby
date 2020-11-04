@@ -58,6 +58,11 @@ public class HopbyServiceImplementation implements HopbyService {
     }
 
     @Override
+    public List<Session> findAllSession() {
+        return sessionRepository.findAllSession();
+    }
+
+    @Override
     public Session findSessionById(long id) {
         return sessionRepository.findSessionById(id);
     }
