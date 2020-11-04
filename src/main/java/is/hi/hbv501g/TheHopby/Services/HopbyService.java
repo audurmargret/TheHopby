@@ -10,7 +10,6 @@ public interface HopbyService {
 
     // Hobby
     public Hobby save(Hobby hobby);
-    public void delete(Hobby hobby);
     public List<Hobby> findAllHobby();
     public List<Hobby> findByName(String name);
     public Optional<Hobby> findById(long id);
@@ -18,7 +17,8 @@ public interface HopbyService {
     // Session
     public Session save(Session session);
     public List<Session> findSessionByHobby(long hobbyId);
-    //public void delete(Session session);
+
+    public Session findSessionById(long id);
 
 
 }

@@ -46,17 +46,9 @@ public class HobbyController {
 
     @RequestMapping(value = "/hobby/{id}", method = RequestMethod.GET)
     public String goToSessions(@PathVariable("id") long id, Model model) {
-        System.out.println("HERNA ER EH PRENT " + hopbyService.findSessionByHobby(id).get(0).getTitle());
+        //System.out.println("HERNA ER EH PRENT " + hopbyService.findSessionByHobby(id).get(0).getTitle());
         model.addAttribute("sessions", hopbyService.findSessionByHobby(id));
         return "SessionOverview";
-    }
-
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteHobby(@PathVariable("id") long id, Model model) {
-        Hobby hobby = hopbyService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid hobby id"));
-        hopbyService.delete(hobby);
-        model.addAttribute("hobby", hopbyService.findAllHobby());
-        return "Velkomin";
     }
 
     @RequestMapping("/login")

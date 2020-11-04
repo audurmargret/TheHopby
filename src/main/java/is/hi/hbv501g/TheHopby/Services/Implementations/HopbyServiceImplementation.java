@@ -32,11 +32,6 @@ public class HopbyServiceImplementation implements HopbyService {
     }
 
     @Override
-    public void delete(Hobby hobby) {
-        hobbyRepository.delete(hobby);
-    }
-
-    @Override
     public List<Hobby> findAllHobby() {
         return hobbyRepository.findAll();
     }
@@ -56,15 +51,17 @@ public class HopbyServiceImplementation implements HopbyService {
         return sessionRepository.save(session);
     }
 
+
     @Override
     public List<Session> findSessionByHobby(long hobbyId) {
         return sessionRepository.findSessionByHobby(hobbyId);
     }
-    /*
+
     @Override
-    public void delete(Session session) {
-        sessionRepository.delete(session);
-    }*/
+    public Session findSessionById(long id) {
+        return sessionRepository.findSessionById(id);
+    }
+
 
 
 

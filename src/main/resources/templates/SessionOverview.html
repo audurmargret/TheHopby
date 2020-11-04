@@ -21,6 +21,7 @@
                     <th>Slots available</th>
                     <th>Total slots</th>
                     <th>Description</th>
+                    <th>Delete</th>
                 </tr>
             </thread>
             <tbody>
@@ -35,6 +36,7 @@
                 <td th:text="${sessionss.slotsAvailable}"></td>
                 <td th:text="${sessionss.slots}"></td>
                 <td th:text="${sessionss.description}"></td>
+                <td><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>

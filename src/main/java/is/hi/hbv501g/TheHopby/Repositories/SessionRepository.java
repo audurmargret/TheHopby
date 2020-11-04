@@ -12,9 +12,11 @@ public interface SessionRepository extends JpaRepository<Hobby, Long> {
 
 
     Session save(Session session);
-    //void delete(Session session);
 
     @Query(value = "SELECT p FROM Session p WHERE p.hobbyId = ?1")
     List<Session> findSessionByHobby(long id);
+
+    @Query(value ="SELECT p FROM Session p WHERE p.id = ?1")
+    Session findSessionById(long id);
 
 }
