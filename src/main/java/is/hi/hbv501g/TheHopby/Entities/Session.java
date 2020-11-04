@@ -38,8 +38,8 @@ public class Session {
         this.date = date;
         this.time = time;
         users = new ArrayList<User>();
-        slotsAvailable = slots;
         this.slots = slots;
+        slotsAvailable = slots;
         this.hobbyId = hobbyId;
         this.description = description;
     }

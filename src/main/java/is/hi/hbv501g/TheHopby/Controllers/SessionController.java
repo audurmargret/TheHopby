@@ -41,7 +41,7 @@ public class SessionController {
             return "AddSession";
         }
         hopbyService.save(session);
-        model.addAttribute("sessions", hopbyService.findSessionByHobby(1));
+        model.addAttribute("sessions", hopbyService.findAllSession());
         return "SessionOverview";
     }
 
@@ -50,8 +50,8 @@ public class SessionController {
     public String deleteSession(@PathVariable("id") long id, Model model) {
         System.out.println("session: " + hopbyService.findSessionById(id));
         Session session = hopbyService.findSessionById(id);
-
         model.addAttribute("sessions", session);
+
         //Hobby hobby = hopbyService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid hobby id"));
         //hopbyService.delete(hobby);
         //model.addAttribute("hobby", hopbyService.findAllHobby());
