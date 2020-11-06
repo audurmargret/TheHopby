@@ -36,7 +36,7 @@ public class HobbyController {
     @RequestMapping("/")
     public String Home(Model model) {
         if(fyrsta) {
-            upphaf();
+           upphaf();
         }
         model.addAttribute("hobby", hopbyService.findAllHobby());
         return "Velkomin";

@@ -1,11 +1,9 @@
 package is.hi.hbv501g.TheHopby.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "Hobbies")
 public class Hobby {
 
     @Id

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.Optional;
 
-public interface SessionRepository extends JpaRepository<Hobby, Long> {
+public interface SessionRepository extends JpaRepository<Session, Long> {
 
 
     Session save(Session session);

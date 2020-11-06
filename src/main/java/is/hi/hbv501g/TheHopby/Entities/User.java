@@ -2,8 +2,10 @@ package is.hi.hbv501g.TheHopby.Entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Users")
 public class User {
 
     @Id

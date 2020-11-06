@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name= "Sessions")
 public class Session {
 
     @Id
@@ -22,8 +23,8 @@ public class Session {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
     private LocalTime time;
-    @OneToMany
-    private List<User> users;
+    //@OneToMany
+    //private List<User> users;
     private int slotsAvailable;
     private int slots;
     private long hobbyId;
@@ -37,7 +38,7 @@ public class Session {
         this.location = location;
         this.date = date;
         this.time = time;
-        users = new ArrayList<User>();
+        //users = new ArrayList<User>();
         this.slots = slots;
         slotsAvailable = slots;
         this.hobbyId = hobbyId;
@@ -84,14 +85,14 @@ public class Session {
         this.time = time;
     }
 
-    public List<User> getUsers() {
+    /*public List<User> getUsers() {
         return users;
     }
 
     public void setUsers(List<User> users) {
         this.users = users;
     }
-
+*/
     public int getSlotsAvailable() {
         return slotsAvailable;
     }
