@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -34,15 +35,21 @@ public class SessionController {
 
     // Laga til að fara til baka á rétta síðu!
     @RequestMapping(value = "/hobby/addSession", method = RequestMethod.POST)
-    public String addHobby(@Valid @ModelAttribute("sessions") Session session, BindingResult result, Model model) {
+    public String addHobby(@Valid @ModelAttribute("sessions") Session session, @RequestParam String action, BindingResult result, Model model) {
         if (result.hasErrors()) {
             System.out.println("halló");
             System.out.println(result.getFieldError());
             return "AddSession";
         }
-        hopbyService.save(session);
-        model.addAttribute("sessions", hopbyService.findAllSession());
-        return "SessionOverview";
+        if(action.equals("Cancel")){
+            System.out.println("CANCEL");
+        }
+        if(action.equals("Add Session")){
+            System.out.println("ACTION " + action);
+            hopbyService.save(session);
+            model.addAttribute("sessions", hopbyService.findAllSession());
+        }
+        return "redirect:/hobby/" + session.getHobbyId();
     }
 
     // Laga til að fara til baka á rétta síðu!!
