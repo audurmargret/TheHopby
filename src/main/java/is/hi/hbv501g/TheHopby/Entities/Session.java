@@ -40,7 +40,7 @@ public class Session {
         this.time = time;
         //users = new ArrayList<User>();
         this.slots = slots;
-        slotsAvailable = slots;
+        this.slotsAvailable = slots;
         this.hobbyId = hobbyId;
         this.description = description;
     }

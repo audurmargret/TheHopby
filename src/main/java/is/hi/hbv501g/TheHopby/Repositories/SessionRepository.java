@@ -22,4 +22,5 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
     @Query(value ="SELECT p FROM Session p WHERE p.id = ?1")
     Session findSessionById(long id);
 
+
 }
