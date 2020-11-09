@@ -51,6 +51,11 @@ public class HopbyServiceImplementation implements HopbyService {
         return sessionRepository.save(session);
     }
 
+    @Override
+    public void delete(Session session) {
+        sessionRepository.delete(session);
+    }
+
 
     @Override
     public List<Session> findSessionByHobby(long hobbyId) {

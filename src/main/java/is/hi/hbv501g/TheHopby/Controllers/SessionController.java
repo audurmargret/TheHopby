@@ -47,7 +47,7 @@ public class SessionController {
 
     // Laga til að fara til baka á rétta síðu!!
     @RequestMapping(value = "/openSession/{id}", method = RequestMethod.GET)
-    public String deleteSession(@PathVariable("id") long id, Model model) {
+    public String openSession(@PathVariable("id") long id, Model model) {
         System.out.println("session: " + hopbyService.findSessionById(id));
         Session session = hopbyService.findSessionById(id);
         model.addAttribute("sessions", session);
@@ -55,6 +55,14 @@ public class SessionController {
         //Hobby hobby = hopbyService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid hobby id"));
         //hopbyService.delete(hobby);
         //model.addAttribute("hobby", hopbyService.findAllHobby());
+        return "SessionOverview";
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteSession(@PathVariable("id") long id, Model model) {
+        System.out.println("session: " + hopbyService.findSessionById(id).getTitle() + " DELETE");
+        hopbyService.delete(hopbyService.findSessionById(id));
+        model.addAttribute("sessions", hopbyService.findAllSession());
         return "SessionOverview";
     }
 

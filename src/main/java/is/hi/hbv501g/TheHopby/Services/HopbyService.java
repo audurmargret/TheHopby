@@ -16,6 +16,7 @@ public interface HopbyService {
 
     // Session
     public Session save(Session session);
+    public void delete(Session session);
     public List<Session> findSessionByHobby(long hobbyId);
     public List<Session> findAllSession();
 
