@@ -1,0 +1,9 @@
+#outer {
+    display: flex;
+    flex-flow: column wrap;
+    height: 100px;
+    padding: 20px;
+}
+p {
+    color: green;
+}
