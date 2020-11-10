@@ -1,5 +1,6 @@
 #big-div {
     display: flex;
+    flex-direction: column;
 }
 
 table {
@@ -9,4 +10,8 @@ table {
 
 h2 {
     height: 30px;
+}
+
+th {
+    text-align: left;
 }

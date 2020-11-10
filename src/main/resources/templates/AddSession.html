@@ -7,46 +7,85 @@
     </head>
     <body>
         <form action="#" th:action="@{/hobby/addSession}" th:object="${sessions}" method="post">
+            <header>
+                <h1>Create a new Session</h1>
+            </header>
             <div id="outer">
                 <div id="inner1">
+
                     <div id="title-div">
-                        <label for="title">Title</label>
-                        <input type="text" th:field="*{title}" id="title" placeholder="Title">
+                        <div id="label-div">
+                            <label for="title">Title</label>
+                        </div>
+                        <div id="input-div">
+                            <input type="text" th:field="*{title}" id="title" placeholder="ex. Ball Buddies">
+                        </div>
                     </div>
+
                     <div id="location-div">
-                        <label for="location">Location</label>
-                        <input type="text" th:field="*{location}" id="location" placeholder="Location">
+                        <div id="label-div">
+                            <label for="location">Location</label>
+                        </div>
+                        <div id="input-div">
+                            <input type="text" th:field="*{location}" id="location" placeholder="ex. Reykjavik">
+                        </div>
                     </div>
+
                     <div id="date-div">
-                        <label for="date">Date</label>
-                        <input type="date" th:field="*{date}" id="date" placeholder="Date">
+                        <div id="label-div">
+                            <label for="date">Date</label>
+                        </div>
+                        <div id="input-div">
+                            <input type="date" th:field="*{date}" id="date" placeholder="Date">
+                        </div>
+
                     </div>
                     <div id="time-div">
-                        <label for="time">Time</label>
-                        <input type="time" th:field="*{time}" id="time" placeholder="time">
+                        <div id="label-div">
+                            <label for="time">Time</label>
+                        </div>
+                        <div id="input-div">
+                            <input type="time" th:field="*{time}" id="time" placeholder="time">
+                        </div>
                     </div>
                 </div>
+
                 <div id="inner2">
                     <div id="slots-div">
-                        <label for="slots">Slots</label>
-                        <input type="number" th:field="*{slots}" id="slots" placeholder="Slots">
+                        <div id="label-div">
+                            <label for="slots">Slots</label>
+                        </div>
+                        <div id="input-div">
+                            <input type="number" th:field="*{slots}" id="slots" placeholder="Slots">
+                        </div>
                     </div>
+
                     <div id="hobbyId-div">
-                        <label for="hobbyId">HobbyId</label>
-                        <select th:field="*{hobbyId}" id="hobbyId" placeholder="HobbyId">
-                            <option th:value="1" th:text="Football"></option>
-                            <option th:value="2" th:text="Basketball"></option>
-                            <option th:value="3" th:text="Hiking"></option>
-                        </select>
+                        <div id="label-div">
+                            <label for="hobbyId">HobbyId</label>
+                        </div>
+                        <div id="input-div">
+                            <select th:field="*{hobbyId}" id="hobbyId" placeholder="HobbyId">
+                                <option th:value="1" th:text="Football"></option>
+                                <option th:value="2" th:text="Basketball"></option>
+                                <option th:value="3" th:text="Hiking"></option>
+                            </select>
+                        </div>
                     </div>
+
                     <div id="description-div">
-                        <label for="description">Description</label>
-                        <input type="text" th:field="*{description}" id="description" placeholder="Description">
+                        <div id="label-div">
+                            <label for="description">Description</label>
+                        </div>
+                        <div id="input-div">
+                            <input type="text" th:field="*{description}" id="description" placeholder="ex. Best ball buddies ever">
+                        </div>
                     </div>
-                    <div id="submit-div">
+
+                </div>
+                <div id="inner3">
                         <input type="submit" value="Add Session" name="action">
                         <input type="submit" value="Cancel" name="action">
-                    </div>
                 </div>
             </div>
 

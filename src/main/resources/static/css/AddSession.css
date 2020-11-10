@@ -1,9 +1,64 @@
 #outer {
     display: flex;
-    flex-flow: column wrap;
-    height: 100px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: fit-content;
     padding: 20px;
+
+    background-color: lightblue;
 }
+
+#inner1 {
+    width: 40%;
+}
+
+#inner2 {
+    width: 40%;
+}
+
+#inner3 {
+    width: 25%;
+    padding-top: 15px;
+}
+
+#title-div {
+    padding-bottom: 5px;
+}
+
+#location-div {
+    padding-bottom: 5px;
+}
+
+#date-div {
+    padding-bottom: 5px;
+}
+
+#time-div {
+    padding-bottom: 5px;
+}
+
+#slots-div {
+    padding-bottom: 5px;
+}
+
+#hobbyId-div {
+    padding-bottom: 5px;
+}
+
+#description-div {
+    padding-bottom: 5px;
+}
+
+#input-div {
+    color: lightgrey;
+}
+
 p {
     color: green;
 }
+
+h1 {
+    font-size: 25px;
+}
+
+
