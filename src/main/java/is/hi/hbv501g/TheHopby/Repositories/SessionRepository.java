@@ -13,7 +13,7 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
 
     void delete(Session session);
 
-    @Query(value="SELECT p FROM Session p")
+    @Query(value="SELECT p FROM Session p ORDER BY p.date, p.time ASC")
     List<Session> findAllSession();
 
     @Query(value = "SELECT p FROM Session p WHERE p.hobbyId = ?1")
