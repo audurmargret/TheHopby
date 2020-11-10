@@ -1,0 +1,12 @@
+#big-div {
+    display: flex;
+}
+
+table {
+    border-spacing: 5px;
+    width: 200px;
+}
+
+h2 {
+    height: 30px;
+}

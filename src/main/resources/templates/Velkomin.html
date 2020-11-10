@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hopby</title>
-</head>
-<body>
-<div th:switch="${hobby}">
-    <h2 th:case="null">No hobbies</h2>
-    <div th:case="*">
-        <h2> Hobbies </h2>
-        <table>
-            <thread>
-                <tr>
-                    <th>Name</th>
-                    <th>Id</th>
-                </tr>
-            </thread>
-            <tbody>
-                <tr th:each="hobby : ${hobby}">
-                    <td th:text="${hobby.name}"></td>
-                    <td th:text="${hobby.id}"></td>
-                    <td><a th:href="@{/hobby/{id}(id=${hobby.id})}">Open</a></td>
-                </tr>
-            </tbody>
-        </table>
-        <p><a th:href="@{hobby/all}">See all</a></p>
-    </div>
-</div>
-
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hopby</title>
+    </head>
+    <body>
+        <div th:switch="${hobby}">
+            <h2 th:case="null">No hobbies</h2>
+            <div th:case="*">
+                <div id="big-div">
+                    <h2> Hobbies </h2>
+                    <table>
+                        <thread>
+                            <tr>
+                                <th>Name</th>
+                                <th>Id</th>
+                            </tr>
+                        </thread>
+                        <tbody>
+                        <tr th:each="hobby : ${hobby}">
+                            <td th:text="${hobby.name}"></td>
+                            <td th:text="${hobby.id}"></td>
+                            <td><a th:href="@{/hobby/{id}(id=${hobby.id})}">Open</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><a th:href="@{hobby/all}">See all</a></p>
+            </div>
+        </div>
+    </body>
 </html>
