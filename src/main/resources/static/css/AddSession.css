@@ -60,7 +60,7 @@ p {
 #navigation {
     display: flex;
     justify-content: flex-end;
-    width:50%;
+    align-self: flex-end;
 }
 
 #header-div {
@@ -73,11 +73,12 @@ header {
     flex-wrap: nowrap;
     color: white;
     background-color: #333;
+    justify-content: space-around;
 }
 
 h1 {
     font-size: 25px;
-    pad
+    padding-left: 5%;
 }
 
 li {
@@ -98,7 +99,7 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333;
-
+    border-radius: 21px 21px 0px 0px;
 }
 
 li a:hover {
