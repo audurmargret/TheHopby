@@ -13,7 +13,7 @@
             <thread>
                 <tr>
                     <th>Title</th>
-                    <th>Hobby Id</th>
+                    <th>Hobby</th>
                     <th>Id</th>
                     <th>Location</th>
                     <th>Date</th>
@@ -28,7 +28,11 @@
 
             <tr th:each="sessionss : ${sessions}">
                 <td th:text="${sessionss.title}"></td>
-                <td th:text="${sessionss.hobbyId}"></td>
+                <td th:switch="${sessionss.hobbyId}">
+                    <span th:case="'1'">Football</span>
+                    <span th:case="'2'">Basketball</span>
+                    <span th:case="'3'">Hiking</span>
+                </td>
                 <td th:text="${sessionss.id}"></td>
                 <td th:text="${sessionss.location}"></td>
                 <td th:date="${sessionss.date}"></td>

@@ -33,23 +33,25 @@
                     </div>
                     <div id="hobbyId-div">
                         <label for="hobbyId">HobbyId</label>
-                        <input type="number" th:field="*{hobbyId}" id="hobbyId" placeholder="HobbyId">
+                        <select th:field="*{hobbyId}" id="hobbyId" placeholder="HobbyId">
+                            <option th:value="1" th:text="Football"></option>
+                            <option th:value="2" th:text="Basketball"></option>
+                            <option th:value="3" th:text="Hiking"></option>
+                        </select>
                     </div>
                     <div id="description-div">
                         <label for="description">Description</label>
                         <input type="text" th:field="*{description}" id="description" placeholder="Description">
                     </div>
                     <div id="submit-div">
-                        <input type="submit" value="Add Session">
+                        <input type="submit" value="Add Session" name="action">
+                        <input type="submit" value="Cancel" name="action">
                     </div>
                 </div>
             </div>
 
-    <input type="submit" value="Add Session" name="action">
-    <input type="submit" value="Cancel" name="action">
 </form>
 
         </form>
-        <p><a href="/hobby/all">Cancel</a></p>
     </body>
 </html>
