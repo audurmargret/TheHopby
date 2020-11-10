@@ -46,6 +46,7 @@ public class SessionController {
         }
         if(action.equals("Add Session")){
             System.out.println("ACTION " + action);
+            session.setSlotsAvailable(session.getSlots());
             hopbyService.save(session);
             model.addAttribute("sessions", hopbyService.findAllSession());
         }
@@ -55,7 +56,6 @@ public class SessionController {
     // Laga til að fara til baka á rétta síðu!!
     @RequestMapping(value = "/openSession/{id}", method = RequestMethod.GET)
     public String openSession(@PathVariable("id") long id, Model model) {
-        System.out.println("session: " + hopbyService.findSessionById(id));
         Session session = hopbyService.findSessionById(id);
         model.addAttribute("sessions", session);
 

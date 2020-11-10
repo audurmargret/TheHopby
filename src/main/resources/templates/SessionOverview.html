@@ -22,6 +22,7 @@
                     <th>Total slots</th>
                     <th>Description</th>
                     <th>Open</th>
+                    <th>Delete</th>
                 </tr>
             </thread>
             <tbody>
@@ -35,19 +36,19 @@
                 </td>
                 <td th:text="${sessionss.id}"></td>
                 <td th:text="${sessionss.location}"></td>
-                <td th:date="${sessionss.date}"></td>
-                <td th:time="${sessionss.time}"></td>
+                <td th:text="${sessionss.date}"></td>
+                <td th:text="${sessionss.time}"></td>
                 <td th:text="${sessionss.slotsAvailable}"></td>
                 <td th:text="${sessionss.slots}"></td>
                 <td th:text="${sessionss.description}"></td>
                 <td><a th:href="@{/openSession/{id}(id=${sessionss.id})}">Open</a></td>
-                <td><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delte</a></td>
+                <td><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>
         <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
-        <p><a href="/hobby/all">All sessions</a></p>
-        <p><a href="/">Back to Hobby Overview</a></p>
+        <p><a th:href="@{/hobby/all}">All sessions</a></p>
+        <p><a th:href="@{/}">Back to Hobby Overview</a></p>
     </div>
 </div>
 
