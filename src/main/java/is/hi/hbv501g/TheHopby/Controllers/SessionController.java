@@ -91,7 +91,10 @@ public class SessionController {
 
     @RequestMapping(value = "/joinSession/{id}", method = RequestMethod.GET)
     public String joinSession(@PathVariable("id") long id,HttpSession hSession, Model model) {
-
+        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
+        if(loggedInUser == null ){
+            return "redirect:/";
+        }
         User user = (User) hSession.getAttribute("LoggedInUser");
         hopbyService.joinSession(id, user);
         model.addAttribute("sessions", hopbyService.findAllSession());
