@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Hopby - Add sessions</title>
-        <link rel="stylesheet" type="text/css" href="/css/AddSession.css" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/AddSession.css}" />
     </head>
     <body>
         <form action="#" th:action="@{/hobby/addSession}" th:object="${sessions}" method="post">
@@ -23,7 +23,7 @@
             <div id="outer">
                 <div id="inner1">
 
-                    <div id="title-div">
+                    <div class="inner-class" id="title-div">
                         <div id="label-div">
                             <label for="title">Title</label>
                         </div>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
 
-                    <div id="location-div">
+                    <div class="inner-class" id="location-div">
                         <div id="label-div">
                             <label for="location">Location</label>
                         </div>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
 
-                    <div id="date-div">
+                    <div class="inner-class" id="date-div">
                         <div id="label-div">
                             <label for="date">Date</label>
                         </div>
@@ -50,7 +50,7 @@
                         </div>
 
                     </div>
-                    <div id="time-div">
+                    <div class="inner-class" id="time-div">
                         <div id="label-div">
                             <label for="time">Time</label>
                         </div>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div id="inner2">
-                    <div id="slots-div">
+                    <div class="inner-class" id="slots-div">
                         <div id="label-div">
                             <label for="slots">Slots</label>
                         </div>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
 
-                    <div id="hobbyId-div">
+                    <div class="inner-class" id="hobbyId-div">
                         <div id="label-div">
                             <label for="hobbyId">HobbyId</label>
                         </div>
@@ -83,7 +83,7 @@
                         </div>
                     </div>
 
-                    <div id="description-div">
+                    <div class="inner-class" id="description-div">
                         <div id="label-div">
                             <label for="description">Description</label>
                         </div>

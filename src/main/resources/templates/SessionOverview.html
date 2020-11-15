@@ -3,30 +3,43 @@
     <head>
         <meta charset="UTF-8">
         <title>Hopby - Sessions</title>
-        <link rel="stylesheet" type="text/css" href="/css/SessionOverview.css" />
+        <link rel="stylesheet" th:href="@{/css/SessionOverview.css}" />
     </head>
     <body>
         <div th:switch="${sessions}">
             <h2 th:case="null">No sessions</h2>
             <div th:case="*">
-                <h2> Sessions </h2>
-                <table>
-                    <thread>
-                        <tr>
-                            <th>Title</th>
-                            <th>Hobby</th>
-                            <th>Id</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Slots available</th>
-                            <th>Total slots</th>
-                            <th>Description</th>
-                            <th>Open</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thread>
-                    <tbody>
+                <header>
+                    <div id="header-div">
+                        <h1>Sessions</h1>
+                    </div>
+                    <div id="navigation">
+                        <ul>
+                            <li><a href="Velkomin.html">Home</a></li>
+                            <li><a href="AddSession.html">Create new</a></li>
+                            <li><a href="SessionOverview.html">Find Sessions</a></li>
+                            <li><a href="LoginPage.html">Login</a></li>
+                        </ul>
+                    </div>
+                </header>
+                <div id="big-div">
+                    <table>
+                        <thread>
+                            <tr>
+                                <th>Title</th>
+                                <th>Hobby</th>
+                                <th>Id</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Slots available</th>
+                                <th>Total slots</th>
+                                <th>Description</th>
+                                <th>Open</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thread>
+                        <tbody>
 
                         <tr th:each="sessionss : ${sessions}">
                             <td th:text="${sessionss.title}"></td>
@@ -45,11 +58,12 @@
                             <td><a th:href="@{/openSession/{id}(id=${sessionss.id})}">Open</a></td>
                             <td><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></td>
                         </tr>
-                    </tbody>
-                </table>
-                <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
-                <p><a th:href="@{/hobby/all}">All sessions</a></p>
-                <p><a th:href="@{/}">Back to Hobby Overview</a></p>
+                        </tbody>
+                    </table>
+                    <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
+                    <p><a th:href="@{/hobby/all}">All sessions</a></p>
+                    <p><a th:href="@{/}">Back to Hobby Overview</a></p>
+                </div>
             </div>
         </div>
     </body>
