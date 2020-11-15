@@ -23,25 +23,25 @@
         <div th:switch="${sessions}">
             <h2 th:case="null">No sessions</h2>
             <div th:case="*">
-                <h2> Sessions </h2>
-                <table>
-                    <thread>
-                        <tr>
-                            <th>Title</th>
-                            <th>Hobby</th>
-                            <th>Id</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Slots available</th>
-                            <th>Total slots</th>
-                            <th>Description</th>
-                            <th>Open</th>
-                            <th>Join</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thread>
-                    <tbody>
+                <div id="big-div">
+                    <table>
+                        <thread>
+                            <tr>
+                                <th>Title</th>
+                                <th>Hobby</th>
+                                <th>Id</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Slots available</th>
+                                <th>Total slots</th>
+                                <th>Description</th>
+                                <th>Open</th>
+                                <th>Join</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thread>
+                        <tbody>
 
                         <tr th:each="sessionss : ${sessions}">
                             <td th:text="${sessionss.title}"></td>
@@ -61,12 +61,12 @@
                             <td><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></td>
                             <td><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></td>
                         </tr>
-                    </tbody>
-                </table>
-                <div id="small-div">
-                    <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
-                    <p><a th:href="@{/hobby/all}">All sessions</a></p>
-                    <p><a th:href="@{/home}">Back to Hobby Overview</a></p>
+                        </tbody>
+                    </table>
+                    <div id="small-div">
+                        <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
+                        <p><a th:href="@{/hobby/all}">All sessions</a></p>
+                        <p><a th:href="@{/home}">Back to Hobby Overview</a></p>
                 </div>
             </div>
         </div>
