@@ -33,7 +33,7 @@ public class SessionController {
         return "AddSession";
     }
 
-    // Laga til að fara til baka á rétta síðu!
+
     @RequestMapping(value = "/hobby/addSession", method = RequestMethod.POST)
     public String addHobby(@Valid @ModelAttribute("sessions") Session session, @RequestParam String action, BindingResult result, Model model) {
         if (result.hasErrors()) {
@@ -53,7 +53,7 @@ public class SessionController {
         return "redirect:/hobby/" + session.getHobbyId();
     }
 
-    // Laga til að fara til baka á rétta síðu!!
+
     @RequestMapping(value = "/openSession/{id}", method = RequestMethod.GET)
     public String openSession(@PathVariable("id") long id, Model model) {
         Session session = hopbyService.findSessionById(id);

@@ -2,29 +2,22 @@ package is.hi.hbv501g.TheHopby.Controllers;
 
 import is.hi.hbv501g.TheHopby.Entities.Hobby;
 import is.hi.hbv501g.TheHopby.Entities.Session;
+import is.hi.hbv501g.TheHopby.Entities.User;
 import is.hi.hbv501g.TheHopby.Services.HopbyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.validation.Valid;
-import java.net.URL;
-import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 @Controller
 public class HobbyController {
 
-    private boolean fyrsta = true;
+    private boolean first = true;
     private HopbyService hopbyService;
 
 
@@ -34,12 +27,12 @@ public class HobbyController {
     }
 
     @RequestMapping("/")
-    public String Home(Model model) {
-        if(fyrsta) {
-           upphaf();
+    public String home(Model model) {
+        if(first) {
+           start();
         }
         model.addAttribute("hobby", hopbyService.findAllHobby());
-        return "Velkomin";
+        return "HobbyOverview";
     }
 
 
@@ -63,7 +56,7 @@ public class HobbyController {
     }
 
 
-    private void upphaf() {
+    private void start() {
         Hobby football = new Hobby("Football", 1);
         Hobby basketball = new Hobby("Basketball", 2);
         Hobby hiking = new Hobby("Hiking", 3);
@@ -80,6 +73,8 @@ public class HobbyController {
         hopbyService.save(s3);
         hopbyService.save(s4);
         hopbyService.save(s5);
-        fyrsta = false;
+        User u1 = new User("audur", "123", "Audur Margret");
+        hopbyService.save(u1);
+        first = false;
     }
 }

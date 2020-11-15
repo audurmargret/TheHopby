@@ -2,8 +2,10 @@ package is.hi.hbv501g.TheHopby.Services.Implementations;
 
 import is.hi.hbv501g.TheHopby.Entities.Hobby;
 import is.hi.hbv501g.TheHopby.Entities.Session;
+import is.hi.hbv501g.TheHopby.Entities.User;
 import is.hi.hbv501g.TheHopby.Repositories.HobbyRepository;
 import is.hi.hbv501g.TheHopby.Repositories.SessionRepository;
+import is.hi.hbv501g.TheHopby.Repositories.UserRepository;
 import is.hi.hbv501g.TheHopby.Services.HopbyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.client.Hop;
@@ -18,11 +20,13 @@ public class HopbyServiceImplementation implements HopbyService {
 
     HobbyRepository hobbyRepository;
     SessionRepository sessionRepository;
+    UserRepository userRepository;
 
     @Autowired
-    public HopbyServiceImplementation(HobbyRepository hRepo, SessionRepository sRepo) {
+    public HopbyServiceImplementation(HobbyRepository hRepo, SessionRepository sRepo, UserRepository uRepo) {
         hobbyRepository = hRepo;
         sessionRepository = sRepo;
+        userRepository = uRepo;
     }
 
 
@@ -72,7 +76,44 @@ public class HopbyServiceImplementation implements HopbyService {
         return sessionRepository.findSessionById(id);
     }
 
+    @Override
+    public User save(User user) {
+        return userRepository.save(user);
+    }
 
+    @Override
+    public void delete(User user) {
+        userRepository.delete(user);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User findByUserName(String username) {
+        return userRepository.findByUserName(username);
+    }
+
+    @Override
+    public User login(User user) {
+        User exist = userRepository.findByUserName(user.getUserName());
+        System.out.println("user user: " + user.getUserName());
+        System.out.println("user pass: " + user.getPassword());
+        System.out.println("exsist : " + exist);
+        System.out.println("pass ex: " + exist.getPassword());
+        if(exist != null) {
+            //Notandi er til
+            if(exist.getPassword().equals(user.getPassword())){
+                //Password er rétt
+                return user;
+            }
+        }
+
+        //Notandi er ekki til
+        return null;
+    }
 
 
 }
