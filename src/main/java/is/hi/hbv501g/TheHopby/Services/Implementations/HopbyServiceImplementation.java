@@ -60,11 +60,6 @@ public class HopbyServiceImplementation implements HopbyService {
         sessionRepository.delete(session);
     }
 
-    /*@Override
-    public Session updateSession(long id) {
-        return sessionRepository.updateSession(id);
-    }
-*/
 
     @Override
     public List<Session> findSessionByHobby(long hobbyId) {
@@ -124,16 +119,9 @@ public class HopbyServiceImplementation implements HopbyService {
         Session session = findSessionById(id);
         System.out.println("Session to join " + session.getTitle());
         boolean exists = false;
-/*
-        if(session.getUsers().isEmpty()){
-            session.setUsers(user);
-            sessionRepository.save(session);
-            System.out.println("bæta við - tómur listi");
-        }
-        else {*/
-            for(int i=0; i<session.getUsers().size(); i++) {
 
-                if (session.getUsers().get(i).getUserName() == (user.getUserName())) {
+            for(int i=0; i<session.getUsers().size(); i++) {
+                if (session.getUsers().get(i).getUserName().equals((user.getUserName()))) {
                     exists = true;
                 }
             }
@@ -141,18 +129,9 @@ public class HopbyServiceImplementation implements HopbyService {
                 if(session.getSlotsAvailable()== 0){
                     return null;
                 }
-
                 session.setUsers(user);
                 sessionRepository.save(session);
-                System.out.println("bæta við - ekki tómur");
-
-
             }
-
-        //}
-
-
-        
 
         return session;
     }

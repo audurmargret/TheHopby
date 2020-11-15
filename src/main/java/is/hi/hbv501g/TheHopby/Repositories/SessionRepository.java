@@ -20,7 +20,7 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
     @Query(value="SELECT p FROM Session p ORDER BY p.date, p.time ASC")
     List<Session> findAllSession();
 
-    @Query(value = "SELECT p FROM Session p WHERE p.hobbyId = ?1")
+    @Query(value = "SELECT p FROM Session p WHERE p.hobbyId = ?1 ORDER BY p.date, p.time ASC")
     List<Session> findSessionByHobby(long id);
 
     @Query(value ="SELECT p FROM Session p WHERE p.id = ?1")

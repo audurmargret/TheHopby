@@ -68,7 +68,6 @@ public class SessionController {
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteSession(@PathVariable("id") long id, Model model) {
-        System.out.println("session: " + hopbyService.findSessionById(id).getTitle() + " DELETE");
         hopbyService.delete(hopbyService.findSessionById(id));
         model.addAttribute("sessions", hopbyService.findAllSession());
         return "SessionOverview";
@@ -76,9 +75,8 @@ public class SessionController {
 
     @RequestMapping(value = "/joinSession/{id}", method = RequestMethod.GET)
     public String joinSession(@PathVariable("id") long id,HttpSession session, Model model) {
-        System.out.println("join session: " + hopbyService.findSessionById(id).getTitle() + " JOIN");
+
         User user = (User) session.getAttribute("LoggedInUser");
-        System.out.println("user í join controller " + user);
         hopbyService.joinSession(id, user);
         model.addAttribute("sessions", hopbyService.findAllSession());
 
