@@ -3,6 +3,7 @@ package is.hi.hbv501g.TheHopby.Controllers;
 
 import is.hi.hbv501g.TheHopby.Entities.Hobby;
 import is.hi.hbv501g.TheHopby.Entities.Session;
+import is.hi.hbv501g.TheHopby.Entities.User;
 import is.hi.hbv501g.TheHopby.Services.HopbyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -59,10 +61,7 @@ public class SessionController {
         Session session = hopbyService.findSessionById(id);
         model.addAttribute("sessions", session);
 
-        //Hobby hobby = hopbyService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid hobby id"));
-        //hopbyService.delete(hobby);
-        //model.addAttribute("hobby", hopbyService.findAllHobby());
-        return "SessionOverview";
+        return "ViewSession";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
@@ -70,6 +69,17 @@ public class SessionController {
         System.out.println("session: " + hopbyService.findSessionById(id).getTitle() + " DELETE");
         hopbyService.delete(hopbyService.findSessionById(id));
         model.addAttribute("sessions", hopbyService.findAllSession());
+        return "SessionOverview";
+    }
+
+    @RequestMapping(value = "/joinSession/{id}", method = RequestMethod.GET)
+    public String joinSession(@PathVariable("id") long id,HttpSession session, Model model) {
+        System.out.println("join session: " + hopbyService.findSessionById(id).getTitle() + " JOIN");
+        User user = (User) session.getAttribute("LoggedInUser");
+        System.out.println("user í join controller " + user);
+        hopbyService.joinSession(id, user);
+        model.addAttribute("sessions", hopbyService.findAllSession());
+
         return "SessionOverview";
     }
 

@@ -23,8 +23,8 @@ public class Session {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
     private LocalTime time;
-    //@OneToMany
-    //private List<User> users;
+    @OneToMany
+    private List<User> users;
     private int slotsAvailable;
     private int slots;
     private long hobbyId;
@@ -85,14 +85,18 @@ public class Session {
         this.time = time;
     }
 
-    /*public List<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUsers(User user) {
+        this.users.add(user);
+        System.out.println("Bæta við user í session lista");
+        System.out.println("listinn: " + users);
+        slotsAvailable--;
+
     }
-*/
+
     public int getSlotsAvailable() {
         return slotsAvailable;
     }

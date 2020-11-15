@@ -41,7 +41,7 @@ public class UserController {
         if(exists != null){
             session.setAttribute("LoggedInUser", user);
             System.out.println("LOGIN SESSION: " + session.getAttribute("LoggedInUser"));
-            return "redirect:/";
+            return "HobbyOverview";
         }
         return "LoginPage";
     }
@@ -76,7 +76,7 @@ public class UserController {
     public String loggedinGET(HttpSession session, Model model){
         model.addAttribute("movies",hopbyService.findAll());
         User sessionUser = (User) session.getAttribute("LoggedInUser");
-        System.out.println("LOGGED IN: " + session);
+        System.out.println("LOGGED IN: " + sessionUser);
         if(sessionUser  != null){
             model.addAttribute("loggedinuser", sessionUser);
             return "loggedInUser";

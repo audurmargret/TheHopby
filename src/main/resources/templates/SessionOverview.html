@@ -13,7 +13,7 @@
             </div>
             <div id="navigation">
                 <ul>
-                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/home}">Home</a></li>
                     <li><a th:href="@{/hobby/addSession}">Create new</a></li>
                     <li><a th:href="@{/hobby/all}">Find Sessions</a></li>
                     <li><a th:href="@{/login}">Login</a></li>
@@ -37,6 +37,7 @@
                             <th>Total slots</th>
                             <th>Description</th>
                             <th>Open</th>
+                            <th>Join</th>
                             <th>Delete</th>
                         </tr>
                     </thread>
@@ -57,13 +58,14 @@
                             <td th:text="${sessionss.slots}"></td>
                             <td th:text="${sessionss.description}"></td>
                             <td><a th:href="@{/openSession/{id}(id=${sessionss.id})}">Open</a></td>
+                            <td><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></td>
                             <td><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></td>
                         </tr>
                     </tbody>
                 </table>
                 <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
                 <p><a th:href="@{/hobby/all}">All sessions</a></p>
-                <p><a th:href="@{/}">Back to Hobby Overview</a></p>
+                <p><a th:href="@{/home}">Back to Hobby Overview</a></p>
             </div>
         </div>
     </body>

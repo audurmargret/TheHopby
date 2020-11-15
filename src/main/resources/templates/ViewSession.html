@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" lang="is">
+<head>
+    <meta charset="UTF-8">
+    <title>Hopby - Sessions</title>
+    <link rel="stylesheet" type="text/css" href="/css/SessionOverview.css" />
+    <link rel="stylesheet" type="text/css" href="/css/Styles.css" />
+</head>
+<body>
+<header>
+    <div id="header-div">
+        <h1>Session Overview</h1>
+    </div>
+    <div id="navigation">
+        <ul>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/hobby/addSession}">Create new</a></li>
+            <li><a th:href="@{/hobby/all}">Find Sessions</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+        </ul>
+    </div>
+</header>
+<div th:switch="${sessions}">
+    <h2 th:case="null">No sessions</h2>
+    <div th:case="*">
+        <h2> Sessions </h2>
+        <table>
+            <thread>
+                <tr>
+                    <th>Title</th>
+                    <th>Hobby</th>
+                    <th>Id</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Slots available</th>
+                    <th>Total slots</th>
+                    <th>Description</th>
+                    <th>Users</th>
+                    <th>Join</th>
+                    <th>Delete</th>
+
+                </tr>
+            </thread>
+            <tbody>
+
+            <tr th:each="sessionss : ${sessions}">
+                <td th:text="${sessionss.title}"></td>
+                <td th:switch="${sessionss.hobbyId}">
+                    <span th:case="'1'">Football</span>
+                    <span th:case="'2'">Basketball</span>
+                    <span th:case="'3'">Hiking</span>
+                </td>
+                <td th:text="${sessionss.id}"></td>
+                <td th:text="${sessionss.location}"></td>
+                <td th:text="${sessionss.date}"></td>
+                <td th:text="${sessionss.time}"></td>
+                <td th:text="${sessionss.slotsAvailable}"></td>
+                <td th:text="${sessionss.slots}"></td>
+                <td th:text="${sessionss.description}"></td>
+                <td th:each="users : ${sessionss.users}">
+                    <p th:text="${users.userName}"></p>
+                </td>
+                <td><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></td>
+                <td><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
