@@ -22,6 +22,7 @@ public class Session {
     private String location;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
+    @DateTimeFormat(pattern="HH:mm")
     private LocalTime time;
     @OneToMany
     private List<User> users;
