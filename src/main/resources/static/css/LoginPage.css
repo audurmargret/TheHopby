@@ -1,0 +1,7 @@
+#big-div {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    height: fit-content;
+    background-color: lightblue;
+}
