@@ -16,7 +16,6 @@
                     <li><a th:href="@{/home}">Home</a></li>
                     <li><a th:href="@{/hobby/addSession}">Create new</a></li>
                     <li><a th:href="@{/hobby/all}">Find Sessions</a></li>
-                    <li><a th:href="@{/login}">Login</a></li>
                 </ul>
             </div>
         </header>
@@ -38,7 +37,6 @@
                                 <th>Description</th>
                                 <th>Open</th>
                                 <th>Join</th>
-                                <th>Delete</th>
                             </tr>
                         </thread>
                         <tbody>
@@ -59,16 +57,15 @@
                             <td th:text="${sessionss.description}"></td>
                             <td><a th:href="@{/openSession/{id}(id=${sessionss.id})}">Open</a></td>
                             <td><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></td>
-                            <td><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></td>
-                        </tr>
+                            </tr>
                         </tbody>
                     </table>
                     <div id="small-div">
                         <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
                         <p><a th:href="@{/hobby/all}">All sessions</a></p>
                         <p><a th:href="@{/home}">Back to Hobby Overview</a></p>
+                    </div>
                 </div>
-            </div>
         </div>
     </body>
 </html>

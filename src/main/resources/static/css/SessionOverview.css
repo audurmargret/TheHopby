@@ -1,5 +1,5 @@
 #big-div {
-    display: flex;
+    display: block;
     align-items: flex-start;
     flex-wrap: wrap;
     height: fit-content;
