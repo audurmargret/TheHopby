@@ -3,23 +3,25 @@
     <head>
         <meta charset="UTF-8">
         <title>Hopby - Add sessions</title>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/AddSession.css}" />
+        <link rel="stylesheet" type="text/css" href="/css/AddSession.css" />
+        <link rel="stylesheet" type="text/css" href="/css/Styles.css" />
     </head>
     <body>
+        <header>
+            <div id="header-div">
+                <h1>Create a new Session</h1>
+            </div>
+            <div id="navigation">
+                <ul>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li><a th:href="@{/hobby/addSession}">Create new</a></li>
+                    <li><a th:href="@{/hobby/all}">Find Sessions</a></li>
+                    <li><a th:href="@{/login}">Login</a></li>
+                </ul>
+            </div>
+        </header>
+
         <form action="#" th:action="@{/hobby/addSession}" th:object="${sessions}" method="post">
-            <header>
-                <div id="header-div">
-                    <h1>Create a new Session</h1>
-                </div>
-                <div id="navigation">
-                    <ul>
-                        <li><a href="Velkomin.html">Home</a></li>
-                        <li><a href="AddSession.html">Create new</a></li>
-                        <li><a href="SessionOverview.html">Find Sessions</a></li>
-                        <li><a href="LoginPage.html">Login</a></li>
-                    </ul>
-                </div>
-            </header>
             <div id="outer">
                 <div id="inner1">
 
