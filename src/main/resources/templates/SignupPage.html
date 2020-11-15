@@ -20,14 +20,14 @@
                 </ul>
             </div>
         </header>
+        <div id="big-div">
+            <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
+                <input type="text" name="username" id="username" th:field="*{userName}" />
 
-        <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
-            <input type="text" name="username" id="username" th:field="*{userName}" />
+                <input type="text" name="password" id="password" th:value="*{password}" />
 
-            <input type="text" name="password" id="password" th:value="*{password}" />
-
-            <input type="submit" value="Sign up"/>
-        </form>
-
+                <input type="submit" value="Sign up"/>
+            </form>
+        </div>
     </body>
 </html>
