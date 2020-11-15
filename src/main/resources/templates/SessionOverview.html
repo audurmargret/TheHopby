@@ -7,32 +7,19 @@
         <link rel="stylesheet" type="text/css" href="/css/Styles.css" />
     </head>
     <body>
-        <header>
-            <div id="header-div">
-                <h1>Session Overview</h1>
-            </div>
-            <div id="navigation">
-                <ul>
-                    <li><a th:href="@{/}">Home</a></li>
-                    <li><a th:href="@{/hobby/addSession}">Create new</a></li>
-                    <li><a th:href="@{/hobby/all}">Find Sessions</a></li>
-                    <li><a th:href="@{/login}">Login</a></li>
-                </ul>
-            </div>
-        </header>
         <div th:switch="${sessions}">
             <h2 th:case="null">No sessions</h2>
             <div th:case="*">
                 <header>
                     <div id="header-div">
-                        <h1>Sessions</h1>
+                        <h1>Session Overview</h1>
                     </div>
                     <div id="navigation">
                         <ul>
-                            <li><a href="Velkomin.html">Home</a></li>
-                            <li><a href="AddSession.html">Create new</a></li>
-                            <li><a href="SessionOverview.html">Find Sessions</a></li>
-                            <li><a href="LoginPage.html">Login</a></li>
+                            <li><a th:href="@{/}">Home</a></li>
+                            <li><a th:href="@{/hobby/addSession}">Create new</a></li>
+                            <li><a th:href="@{/hobby/all}">Find Sessions</a></li>
+                            <li><a th:href="@{/login}">Login</a></li>
                         </ul>
                     </div>
                 </header>
@@ -74,9 +61,11 @@
                         </tr>
                         </tbody>
                     </table>
-                    <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
-                    <p><a th:href="@{/hobby/all}">All sessions</a></p>
-                    <p><a th:href="@{/}">Back to Hobby Overview</a></p>
+                    <div id="small-div">
+                        <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
+                        <p><a th:href="@{/hobby/all}">All sessions</a></p>
+                        <p><a th:href="@{/}">Back to Hobby Overview</a></p>
+                    </div>
                 </div>
             </div>
         </div>
