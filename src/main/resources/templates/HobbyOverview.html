@@ -24,22 +24,37 @@
             <h2 th:case="null">No hobbies</h2>
             <div th:case="*">
                 <div id="big-div">
-                    <h2> Hobbies </h2>
-                    <table>
-                        <thread>
-                            <tr>
-                                <th>Name</th>
-                                <th>Id</th>
+                    <header>
+                        <div id="header-div">
+                            <h1>Hobbies</h1>
+                        </div>
+                        <div id="navigation">
+                            <ul>
+                                <li><a th:href="@{Velkomin.html}">Home</a></li>
+                                <li><a th:href="@{AddSession.html}">Create new</a></li>
+                                <li><a th:href="@{/}">Find Sessions</a></li>
+                                <li><a th:href="@{LoginPage.html}">Login</a></li>
+                            </ul>
+                        </div>
+                    </header>
+                    <div id="small-div">
+                        <table>
+                            <thread>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Id</th>
+                                </tr>
+                            </thread>
+                            <tbody>
+                            <tr th:each="hobby : ${hobby}">
+                                <td th:text="${hobby.name}"></td>
+                                <td th:text="${hobby.id}"></td>
+                                <td><a th:href="@{/hobby/{id}(id=${hobby.id})}">Open</a></td>
                             </tr>
-                        </thread>
-                        <tbody>
-                        <tr th:each="hobby : ${hobby}">
-                            <td th:text="${hobby.name}"></td>
-                            <td th:text="${hobby.id}"></td>
-                            <td><a th:href="@{/hobby/{id}(id=${hobby.id})}">Open</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                        <p><a th:href="@{hobby/all}">See all</a></p>
+                    </div>
                 </div>
                 <p><a th:href="@{hobby/all}">See all</a></p>
             </div>

@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     height: fit-content;
     padding: 20px;
-
+    justify-content: flex-end;
     background-color: lightblue;
 }
 
@@ -21,31 +21,7 @@
     padding-top: 15px;
 }
 
-#title-div {
-    padding-bottom: 5px;
-}
-
-#location-div {
-    padding-bottom: 5px;
-}
-
-#date-div {
-    padding-bottom: 5px;
-}
-
-#time-div {
-    padding-bottom: 5px;
-}
-
-#slots-div {
-    padding-bottom: 5px;
-}
-
-#hobbyId-div {
-    padding-bottom: 5px;
-}
-
-#description-div {
+.inner-class {
     padding-bottom: 5px;
 }
 
