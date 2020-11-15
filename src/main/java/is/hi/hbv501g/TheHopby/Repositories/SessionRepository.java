@@ -13,6 +13,10 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
 
     void delete(Session session);
 
+    /*
+    @Query(value="UPDATE p FROM Session p WHERE p.id = ?1")
+    Session updateSession(long id);
+*/
     @Query(value="SELECT p FROM Session p ORDER BY p.date, p.time ASC")
     List<Session> findAllSession();
 
@@ -21,6 +25,8 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
 
     @Query(value ="SELECT p FROM Session p WHERE p.id = ?1")
     Session findSessionById(long id);
+
+
 
 
 }

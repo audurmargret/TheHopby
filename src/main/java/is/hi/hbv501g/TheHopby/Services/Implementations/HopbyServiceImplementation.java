@@ -60,6 +60,11 @@ public class HopbyServiceImplementation implements HopbyService {
         sessionRepository.delete(session);
     }
 
+    /*@Override
+    public Session updateSession(long id) {
+        return sessionRepository.updateSession(id);
+    }
+*/
 
     @Override
     public List<Session> findSessionByHobby(long hobbyId) {
@@ -99,10 +104,7 @@ public class HopbyServiceImplementation implements HopbyService {
     @Override
     public User login(User user) {
         User exist = userRepository.findByUserName(user.getUserName());
-        System.out.println("user user: " + user.getUserName());
-        System.out.println("user pass: " + user.getPassword());
-        System.out.println("exsist : " + exist);
-        System.out.println("pass ex: " + exist.getPassword());
+
         if(exist != null) {
             //Notandi er til
             if(exist.getPassword().equals(user.getPassword())){
@@ -113,6 +115,46 @@ public class HopbyServiceImplementation implements HopbyService {
 
         //Notandi er ekki til
         return null;
+    }
+
+    @Override
+
+    public Session joinSession(long id, User user) {
+
+        Session session = findSessionById(id);
+        System.out.println("Session to join " + session.getTitle());
+        boolean exists = false;
+/*
+        if(session.getUsers().isEmpty()){
+            session.setUsers(user);
+            sessionRepository.save(session);
+            System.out.println("bæta við - tómur listi");
+        }
+        else {*/
+            for(int i=0; i<session.getUsers().size(); i++) {
+
+                if (session.getUsers().get(i).getUserName() == (user.getUserName())) {
+                    exists = true;
+                }
+            }
+            if(!exists){
+                if(session.getSlotsAvailable()== 0){
+                    return null;
+                }
+
+                session.setUsers(user);
+                sessionRepository.save(session);
+                System.out.println("bæta við - ekki tómur");
+
+
+            }
+
+        //}
+
+
+        
+
+        return session;
     }
 
 

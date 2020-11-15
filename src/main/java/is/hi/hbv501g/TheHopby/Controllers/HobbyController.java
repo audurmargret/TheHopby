@@ -27,14 +27,18 @@ public class HobbyController {
     }
 
     @RequestMapping("/")
-    public String home(Model model) {
+    public String index(Model model) {
         if(first) {
            start();
         }
+        return "Index";
+    }
+
+    @RequestMapping("/home")
+    public String home(Model model){
         model.addAttribute("hobby", hopbyService.findAllHobby());
         return "HobbyOverview";
     }
-
 
 
     @RequestMapping(value = "/hobby/{id}", method = RequestMethod.GET)
@@ -63,9 +67,17 @@ public class HobbyController {
         hopbyService.save(football);
         hopbyService.save(basketball);
         hopbyService.save(hiking);
+        User u1 = new User("audur", "123", "Audur Margret");
+        User u2 = new User("katla", "321", "Katla Rún");
+        User u3 = new User("addi", "987", "Arnþór");
+        User u4 = new User("joi", "789", "Jóhann");
+        hopbyService.save(u1);
+        hopbyService.save(u2);
+        hopbyService.save(u3);
+        hopbyService.save(u4);
         Session s1 = new Session("Football boyyys", "Seljaskóli", LocalDate.parse("2020-12-24"), LocalTime.parse("18:00"), 10, 1, "Jólabolti jeij gaman");
-        Session s2 = new Session("Bumbubolti", "Breiðholtsskóli", LocalDate.parse("2020-11-23"), LocalTime.parse("21:30"), 10, 2, "Yeee");
-        Session s3 = new Session("Georg og félagar", "Ölduselsskóli", LocalDate.parse("2020-11-12"), LocalTime.parse("21:00"), 10, 1, "Vinsælir alls staðar");
+        Session s2 = new Session("Bumbubolti", "Breiðholtsskóli", LocalDate.parse("2020-12-01"), LocalTime.parse("21:30"), 10, 2, "Yeee");
+        Session s3 = new Session("Georg og félagar", "Ölduselsskóli", LocalDate.parse("2020-11-30"), LocalTime.parse("21:00"), 10, 1, "Vinsælir alls staðar");
         Session s4 = new Session("Pink Ladies", "Hólabrekkuskóli", LocalDate.parse("2020-11-28"), LocalTime.parse("17:00"), 10, 2, "Bara stuð");
         Session s5 = new Session("Fjallageitur", "Esjan", LocalDate.parse("2020-12-31"), LocalTime.parse("14:00"), 10, 3, "Röltum Esjuna á Gamlársdag");
         hopbyService.save(s1);
@@ -73,8 +85,8 @@ public class HobbyController {
         hopbyService.save(s3);
         hopbyService.save(s4);
         hopbyService.save(s5);
-        User u1 = new User("audur", "123", "Audur Margret");
-        hopbyService.save(u1);
+
+
         first = false;
     }
 }
