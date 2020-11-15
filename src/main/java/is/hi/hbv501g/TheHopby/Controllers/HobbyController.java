@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -35,21 +36,34 @@ public class HobbyController {
     }
 
     @RequestMapping("/home")
-    public String home(Model model){
+    public String home(Model model, HttpSession hSession){
+        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
+        if(loggedInUser == null ){
+            return "redirect:/";
+        }
         model.addAttribute("hobby", hopbyService.findAllHobby());
         return "HobbyOverview";
     }
 
 
     @RequestMapping(value = "/hobby/{id}", method = RequestMethod.GET)
-    public String goToSessions(@PathVariable("id") long id, Model model) {
+    public String goToSessions(@PathVariable("id") long id, HttpSession hSession, Model model) {
         //System.out.println("HERNA ER EH PRENT " + hopbyService.findSessionByHobby(id).get(0).getTitle());
+        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
+        if(loggedInUser == null ){
+            return "redirect:/";
+        }
         model.addAttribute("sessions", hopbyService.findSessionByHobby(id));
         return "SessionOverview";
+
     }
 
     @RequestMapping(value="/hobby/all", method = RequestMethod.GET)
-    public String goToAllSessions(Model model){
+    public String goToAllSessions(Model model, HttpSession hSession){
+        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
+        if(loggedInUser == null ){
+            return "redirect:/";
+        }
         model.addAttribute("sessions", hopbyService.findAllSession());
         return "SessionOverview";
     }
