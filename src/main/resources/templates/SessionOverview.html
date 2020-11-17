@@ -24,25 +24,11 @@
             <div th:case="*">
                 <div id="big-div">
                     <table>
-                        <thread>
-                            <tr>
-                                <th>Title</th>
-                                <th>Hobby</th>
-                                <th>Id</th>
-                                <th>Location</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Slots available</th>
-                                <th>Total slots</th>
-                                <th>Description</th>
-                                <th>Open</th>
-                                <th>Join</th>
-                            </tr>
-                        </thread>
+                        
                         <tbody>
 
                         <tr th:each="sessionss : ${sessions}">
-                            <td th:text="${sessionss.title}"></td>
+                            <td id="column-title" th:text="${sessionss.title}"></td>
                             <td th:switch="${sessionss.hobbyId}">
                                 <span th:case="'1'">Football</span>
                                 <span th:case="'2'">Basketball</span>
