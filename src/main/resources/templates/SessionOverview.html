@@ -24,25 +24,23 @@
             <div th:case="*">
                 <div id="big-div">
                     <table>
-                        
                         <tbody>
-
-                        <tr th:each="sessionss : ${sessions}">
-                            <td id="column-title" th:text="${sessionss.title}"></td>
-                            <td th:switch="${sessionss.hobbyId}">
-                                <span th:case="'1'">Football</span>
-                                <span th:case="'2'">Basketball</span>
-                                <span th:case="'3'">Hiking</span>
-                            </td>
-                            <td th:text="${sessionss.id}"></td>
-                            <td th:text="${sessionss.location}"></td>
-                            <td th:text="${sessionss.date}"></td>
-                            <td th:text="${sessionss.time}"></td>
-                            <td th:text="${sessionss.slotsAvailable}"></td>
-                            <td th:text="${sessionss.slots}"></td>
-                            <td th:text="${sessionss.description}"></td>
-                            <td><a th:href="@{/openSession/{id}(id=${sessionss.id})}">Open</a></td>
-                            <td><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></td>
+                            <tr th:each="sessionss : ${sessions}">
+                                <td id="column-title" th:text="${sessionss.title}"></td>
+                                <td th:switch="${sessionss.hobbyId}">
+                                    <span th:case="'1'">Football</span>
+                                    <span th:case="'2'">Basketball</span>
+                                    <span th:case="'3'">Hiking</span>
+                                </td>
+                                <td th:text="${sessionss.id}"></td>
+                                <td th:text="${sessionss.location}"></td>
+                                <td th:text="${sessionss.date}"></td>
+                                <td th:text="${sessionss.time}"></td>
+                                <td th:text="${sessionss.slotsAvailable}"></td>
+                                <td th:text="${sessionss.slots}"></td>
+                                <td th:text="${sessionss.description}"></td>
+                                <td><a th:href="@{/openSession/{id}(id=${sessionss.id})}">Open</a></td>
+                                <td><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></td>
                             </tr>
                         </tbody>
                     </table>
