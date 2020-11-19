@@ -61,7 +61,12 @@
                             <p th:text="${users.userName}"></p>
                         </td>
                         <td><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></td>
-                        <td><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></td>
+                        <td>
+                            <div th:switch="${host}">
+                            <p th:case="first"><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></p>
+                            <p th:case="*">You do not have permission to delete this session</p>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

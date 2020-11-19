@@ -41,8 +41,10 @@ public class UserController {
         if(exists != null){
             session.setAttribute("LoggedInUser", user);
             System.out.println("LOGIN SESSION: " + session.getAttribute("LoggedInUser"));
+
             return "HobbyOverview";
         }
+
         return "LoginPage";
     }
 

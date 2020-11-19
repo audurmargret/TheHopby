@@ -75,6 +75,16 @@ public class SessionController {
         Session session = hopbyService.findSessionById(id);
         model.addAttribute("sessions", session);
 
+
+
+
+        if(!session.getUsers().isEmpty() && session.getUsers().get(0).getUserName().equals(loggedInUser.getUserName())){
+            System.out.println("hér");
+            model.addAttribute("host", "first");
+        }
+        else {
+            model.addAttribute("host", "");
+        }
         return "ViewSession";
     }
 
@@ -84,6 +94,7 @@ public class SessionController {
         if(loggedInUser == null ){
             return "redirect:/";
         }
+
         hopbyService.delete(hopbyService.findSessionById(id));
         model.addAttribute("sessions", hopbyService.findAllSession());
         return "SessionOverview";
