@@ -1,5 +1,6 @@
 package is.hi.hbv501g.TheHopby.Entities;
 
+import org.omg.CORBA.SystemException;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -95,7 +96,13 @@ public class Session {
         System.out.println("Bæta við user í session lista");
         System.out.println("listinn: " + users);
         slotsAvailable--;
+    }
 
+    public void removeUser(User user) {
+        this.users.remove(user);
+        System.out.println("Taka " + user.getUserName() + " úr lista");
+        System.out.println("listinn: " + users);
+        slotsAvailable++;
     }
 
     public int getSlotsAvailable() {

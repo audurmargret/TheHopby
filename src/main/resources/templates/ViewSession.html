@@ -60,7 +60,14 @@
                         <td th:each="users : ${sessionss.users}">
                             <p th:text="${users.userName}"></p>
                         </td>
-                        <td><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></td>
+
+                        <td>
+                            <div th:switch="${joined}">
+                                <p th:case="joined"><a th:href="@{/leaveSession/{id}(id=${sessionss.id})}">Leave</a></p>
+                                <p th:case="*"><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></p>
+                            </div>
+                        </td>
+
                         <td>
                             <div th:switch="${host}">
                             <p th:case="first"><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></p>

@@ -24,6 +24,7 @@ public interface HopbyService {
 
     public Session findSessionById(long id);
     public Session joinSession(long id, User user);
+    public Session leaveSession(long id, User user);
 
     // User
     public User save(User user);

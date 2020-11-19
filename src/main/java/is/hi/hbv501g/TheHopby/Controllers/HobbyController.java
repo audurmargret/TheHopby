@@ -31,6 +31,15 @@ public class HobbyController {
     public String index(Model model) {
         if(first) {
            //start();
+            /*hopbyService.delete(hopbyService.findSessionById(4));
+            hopbyService.delete(hopbyService.findSessionById(8));
+            hopbyService.delete(hopbyService.findSessionById(2));
+            hopbyService.delete(hopbyService.findSessionById(7));
+            hopbyService.delete(hopbyService.findSessionById(5));
+            hopbyService.delete(hopbyService.findByUserName("audur"));
+            hopbyService.delete(hopbyService.findByUserName("katla"));
+            hopbyService.delete(hopbyService.findByUserName("addi"));
+            hopbyService.delete(hopbyService.findByUserName("joi"));*/
         }
         return "Index";
     }
@@ -89,11 +98,11 @@ public class HobbyController {
         hopbyService.save(u2);
         hopbyService.save(u3);
         hopbyService.save(u4);
-        Session s1 = new Session("Football boyyys", "Seljaskóli", LocalDate.parse("2020-12-24"), LocalTime.parse("18:00"), 10, 1, "Jólabolti jeij gaman");
-        Session s2 = new Session("Bumbubolti", "Breiðholtsskóli", LocalDate.parse("2020-12-01"), LocalTime.parse("21:30"), 10, 2, "Yeee");
-        Session s3 = new Session("Georg og félagar", "Ölduselsskóli", LocalDate.parse("2020-11-30"), LocalTime.parse("21:00"), 10, 1, "Vinsælir alls staðar");
+        Session s1 = new Session("Football boyyys", "Seljaskóli", LocalDate.parse("2020-12-24"), LocalTime.parse("18:00"), 16, 1, "Jólabolti jeij gaman");
+        Session s2 = new Session("Bumbubolti", "Breiðholtsskóli", LocalDate.parse("2020-12-01"), LocalTime.parse("21:30"), 20, 2, "Yeee");
+        Session s3 = new Session("Georg og félagar", "Ölduselsskóli", LocalDate.parse("2020-11-30"), LocalTime.parse("21:00"), 8, 1, "Vinsælir alls staðar");
         Session s4 = new Session("Pink Ladies", "Hólabrekkuskóli", LocalDate.parse("2020-11-28"), LocalTime.parse("17:00"), 10, 2, "Bara stuð");
-        Session s5 = new Session("Fjallageitur", "Esjan", LocalDate.parse("2020-12-31"), LocalTime.parse("14:00"), 10, 3, "Röltum Esjuna á Gamlársdag");
+        Session s5 = new Session("Fjallageitur", "Esjan", LocalDate.parse("2020-12-31"), LocalTime.parse("14:00"), 12, 3, "Röltum Esjuna á Gamlársdag");
         hopbyService.save(s1);
         hopbyService.save(s2);
         hopbyService.save(s3);

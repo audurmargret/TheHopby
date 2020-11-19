@@ -74,19 +74,27 @@ public class SessionController {
         }
         Session session = hopbyService.findSessionById(id);
         model.addAttribute("sessions", session);
-
-
-
-
+        boolean joined = false;
         if(!session.getUsers().isEmpty() && session.getUsers().get(0).getUserName().equals(loggedInUser.getUserName())){
             System.out.println("hér");
             model.addAttribute("host", "first");
+            joined = true;
         }
         else {
             model.addAttribute("host", "");
         }
+        System.out.println(" " + joined);
+        if(joined || userInSession(loggedInUser, session)){
+            model.addAttribute("joined", "joined");
+            System.out.println("JOINED");
+        }
+        else{
+            model.addAttribute("joined", "notJoined");
+            System.out.println("NOTJOINED ");
+        }
         return "ViewSession";
     }
+
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteSession(@PathVariable("id") long id, HttpSession hSession, Model model) {
@@ -106,12 +114,35 @@ public class SessionController {
         if(loggedInUser == null ){
             return "redirect:/";
         }
-        User user = (User) hSession.getAttribute("LoggedInUser");
-        hopbyService.joinSession(id, user);
-        model.addAttribute("sessions", hopbyService.findAllSession());
+        hopbyService.joinSession(id, loggedInUser);
+        model.addAttribute("sessions", hopbyService.findSessionById(id));
+        model.addAttribute("joined", "leave");
 
-        return "SessionOverview";
+        return "redirect:/openSession/" + id;
     }
 
+    @RequestMapping(value= "/leaveSession/{id}", method = RequestMethod.GET)
+    public String leaveSession(@PathVariable("id") long id, HttpSession hSession, Model model) {
+        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
+        if(loggedInUser == null){
+            return "redirect:/";
+        }
+        hopbyService.leaveSession(id, loggedInUser);
+        model.addAttribute("sessions", hopbyService.findSessionById(id));
+        model.addAttribute("joined", "joined");
+        return "redirect:/openSession/" + id;
+
+
+    }
+
+    public boolean userInSession(User user, Session session){
+        for (int i=0; i<session.getUsers().size();i++){
+            if(session.getUsers().get(i).getUserName().equals(user.getUserName())){
+                System.out.println("skila true");
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
