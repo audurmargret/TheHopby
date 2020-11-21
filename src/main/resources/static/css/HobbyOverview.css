@@ -4,27 +4,33 @@ h1 {
 
 
 
-#big-div {
-    display: flex;
-    flex-direction: column;
-}
-
 #small-div {
-    background-color: lightblue;
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
-table {
-    border-spacing: 5px;
+.hobby{
+    width: 250px;
+    margin-top: 100px;
+    border-style: solid;
+    border-color: grey;
+    background-color: lightcyan;
+    text-align: center;
+    padding-bottom: 15px;
+
+}
+
+.image{
     width: 200px;
-    padding-top: 10px;
-    padding-left: 10px;
+    margin: auto;
+    background-color: lightcyan;
+    padding: 15px;
 }
 
-p {
-    padding-left: 10px;
-}
-
-th {
-    text-align: left;
+img{
+    width: 100%;
 }
 
