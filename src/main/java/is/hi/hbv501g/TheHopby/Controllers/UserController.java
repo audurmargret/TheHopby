@@ -30,22 +30,31 @@ public class UserController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession session){
+    public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession hSession){
         if(result.hasErrors()){
             return "LoginPage";
         }
         model.addAttribute("hobby",hopbyService.findAllHobby());
-        System.out.println("login - pass " + user.getUserName());
         User exists = hopbyService.login(user);
 
         if(exists != null){
-            session.setAttribute("LoggedInUser", user);
-            System.out.println("LOGIN SESSION: " + session.getAttribute("LoggedInUser"));
+            hSession.setAttribute("LoggedInUser", user);
+            System.out.println("LOGIN SESSION: " + hSession.getAttribute("LoggedInUser"));
 
             return "HobbyOverview";
         }
 
         return "LoginPage";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(Model model, HttpSession hSession){
+        if(hSession == null) {
+            return "redirect:/";
+        }
+        hSession.removeAttribute("LoggedInUser");
+        return "redirect:/";
+
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)

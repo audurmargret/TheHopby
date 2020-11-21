@@ -15,7 +15,8 @@
                 <ul>
                     <li><a th:href="@{/home}">Home</a></li>
                     <li><a th:href="@{/hobby/addSession}">Create new</a></li>
-                    <li><a th:href="@{/hobby/all}">Find Sessions</a></li>
+                    <li><a th:href="@{/hobby/all}">All Sessions</a></li>
+                    <li><a th:href="@{/logout}">Logout</a></li>
                 </ul>
             </div>
         </header>
@@ -43,11 +44,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div id="small-div">
-                        <p><a th:href="@{/hobby/addSession}">Add a new session</a></p>
-                        <p><a th:href="@{/hobby/all}">All sessions</a></p>
-                        <p><a th:href="@{/home}">Back to Hobby Overview</a></p>
-                    </div>
                 </div>
         </div>
     </body>
