@@ -21,66 +21,49 @@
                 </ul>
             </div>
         </header>
-    <div th:switch="${sessions}">
-        <h2 th:case="null">No sessions</h2>
-        <div th:case="*">
-            <div id="big-div">
-                <table>
-                    <thread>
-                        <tr>
-                            <th>Title</th>
-                            <th>Hobby</th>
-                            <th>Id</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Slots available</th>
-                            <th>Total slots</th>
-                            <th>Description</th>
-                            <th>Users</th>
-                            <th>Join</th>
-                            <th>Delete</th>
+        <div th:switch="${sessions}">
+            <h2 th:case="null">No sessions</h2>
+            <div th:case="*">
+                <div id="big-div">
+                    <table>
+                        <tbody>
 
+                        <tr th:each="sessionss : ${sessions}">
+                            <td id="column-title" th:text="${sessionss.title}"></td>
+                            <td th:switch="${sessionss.hobbyId}">
+                                <span th:case="'1'">Football</span>
+                                <span th:case="'2'">Basketball</span>
+                                <span th:case="'3'">Hiking</span>
+                            </td>
+                            <td id="column-id" th:text="${sessionss.id}"></td>
+                            <td id="column-location" th:text="${sessionss.location}"></td>
+                            <td id="column-date" th:text="${sessionss.date}"></td>
+                            <td id="column-time" th:text="${sessionss.time}"></td>
+                            <td id="column-slotsAvailable" th:text="${sessionss.slotsAvailable}"></td>
+                            <td id="column-slots" th:text="${sessionss.slots}"></td>
+                            <td id="column-description" th:text="${sessionss.description}"></td>
+                            <td id="column-users" th:each="users : ${sessionss.users}">
+                                <p th:text="${users.userName}"></p>
+                            </td>
+
+                            <td>
+                                <div th:switch="${joined}">
+                                    <p th:case="joined"><a th:href="@{/leaveSession/{id}(id=${sessionss.id})}">Leave</a></p>
+                                    <p th:case="*"><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></p>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div th:switch="${host}">
+                                    <p th:case="first"><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></p>
+                                    <p th:case="*">You do not have permission to delete this session</p>
+                                </div>
+                            </td>
                         </tr>
-                    </thread>
-                    <tbody>
-
-                    <tr th:each="sessionss : ${sessions}">
-                        <td th:text="${sessionss.title}"></td>
-                        <td th:switch="${sessionss.hobbyId}">
-                            <span th:case="'1'">Football</span>
-                            <span th:case="'2'">Basketball</span>
-                            <span th:case="'3'">Hiking</span>
-                        </td>
-                        <td th:text="${sessionss.id}"></td>
-                        <td th:text="${sessionss.location}"></td>
-                        <td th:text="${sessionss.date}"></td>
-                        <td th:text="${sessionss.time}"></td>
-                        <td th:text="${sessionss.slotsAvailable}"></td>
-                        <td th:text="${sessionss.slots}"></td>
-                        <td th:text="${sessionss.description}"></td>
-                        <td th:each="users : ${sessionss.users}">
-                            <p th:text="${users.userName}"></p>
-                        </td>
-
-                        <td>
-                            <div th:switch="${joined}">
-                                <p th:case="joined"><a th:href="@{/leaveSession/{id}(id=${sessionss.id})}">Leave</a></p>
-                                <p th:case="*"><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></p>
-                            </div>
-                        </td>
-
-                        <td>
-                            <div th:switch="${host}">
-                            <p th:case="first"><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></p>
-                            <p th:case="*">You do not have permission to delete this session</p>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
     </body>
 </html>

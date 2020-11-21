@@ -35,4 +35,37 @@ table {
 
 td#column-title {
     font-size: 20px;
+    padding-bottom: 1.5rem;
+}
+
+td#column-id {
+    visibility: hidden;
+}
+
+td#column-location {
+
+}
+
+td#column-date {
+
+}
+
+td#column-time {
+
+}
+
+td#column-slotsAvailable {
+
+}
+
+td#column-slots {
+
+}
+
+td#column-description {
+
+}
+
+td#column-users {
+    text-transform: capitalize;
 }
