@@ -143,7 +143,9 @@ public class HopbyServiceImplementation implements HopbyService {
             }
         }
         if(exsist){
+            System.out.println("IMPL REMOVE USER");
             session.removeUser(user);
+            System.out.println(session.getUsers());
             sessionRepository.save(session);
         }
         return session;

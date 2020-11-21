@@ -99,9 +99,10 @@ public class Session {
     }
 
     public void removeUser(User user) {
-        this.users.remove(user);
+        users.remove(user);
         System.out.println("Taka " + user.getUserName() + " úr lista");
         System.out.println("listinn: " + users);
+        System.out.println("user: " + user);
         slotsAvailable++;
     }
 

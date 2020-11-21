@@ -127,7 +127,8 @@ public class SessionController {
         if(loggedInUser == null){
             return "redirect:/";
         }
-        hopbyService.leaveSession(id, loggedInUser);
+
+        hopbyService.leaveSession(id, hopbyService.findByUserName(loggedInUser.getUserName()));
         model.addAttribute("sessions", hopbyService.findSessionById(id));
         model.addAttribute("joined", "joined");
         return "redirect:/openSession/" + id;
