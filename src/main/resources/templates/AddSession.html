@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Hopby - Add sessions</title>
-        <link rel="stylesheet" type="text/css" href="/css/AddSession.css" />
         <link rel="stylesheet" type="text/css" href="/css/Styles.css" /><link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" type="text/css" href="/css/AddSession.css" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     </head>
     <body>
@@ -23,84 +23,52 @@
         </header>
 
         <form action="#" th:action="@{/hobby/addSession}" th:object="${sessions}" method="post">
-            <div id="outer">
-                <div id="inner1">
-
-                    <div class="inner-class" id="title-div">
-                        <div id="label-div">
-                            <label for="title">Title</label>
-                        </div>
-                        <div id="input-div">
-                            <input type="text" th:field="*{title}" id="title" placeholder="ex. Ball Buddies">
-                        </div>
-                    </div>
-
-                    <div class="inner-class" id="location-div">
-                        <div id="label-div">
-                            <label for="location">Location</label>
-                        </div>
-                        <div id="input-div">
-                            <input type="text" th:field="*{location}" id="location" placeholder="ex. Reykjavik">
-                        </div>
-                    </div>
-
-                    <div class="inner-class" id="date-div">
-                        <div id="label-div">
-                            <label for="date">Date</label>
-                        </div>
-                        <div id="input-div">
-                            <input type="date" th:field="*{date}" id="date" placeholder="Date">
-                        </div>
-
-                    </div>
-                    <div class="inner-class" id="time-div">
-                        <div id="label-div">
-                            <label for="time">Time</label>
-                        </div>
-                        <div id="input-div">
-                            <input type="time" th:field="*{time}" id="time" placeholder="time">
-                        </div>
-                    </div>
-                </div>
-
-                <div id="inner2">
-                    <div class="inner-class" id="slots-div">
-                        <div id="label-div">
-                            <label for="slots">Slots</label>
-                        </div>
-                        <div id="input-div">
-                            <input type="number" th:field="*{slots}" id="slots" placeholder="Slots">
-                        </div>
-                    </div>
-
-                    <div class="inner-class" id="hobbyId-div">
-                        <div id="label-div">
-                            <label for="hobbyId">HobbyId</label>
-                        </div>
-                        <div id="input-div">
-                            <select th:field="*{hobbyId}" id="hobbyId" placeholder="HobbyId">
-                                <option th:value="1" th:text="Football"></option>
-                                <option th:value="2" th:text="Basketball"></option>
-                                <option th:value="3" th:text="Hiking"></option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="inner-class" id="description-div">
-                        <div id="label-div">
-                            <label for="description">Description</label>
-                        </div>
-                        <div id="input-div">
-                            <input type="text" th:field="*{description}" id="description" placeholder="ex. Best ball buddies ever">
-                        </div>
-                    </div>
-
-                </div>
-                <div id="inner3">
-                        <input type="submit" value="Add Session" name="action">
-                        <input type="submit" value="Cancel" name="action">
-                </div>
-            </div>
+            <table>
+                <tr>
+                    <td><label for="title">Title</label></td>
+                    <td><input type="text" th:field="*{title}" id="title" placeholder="ex. Ball Buddies"></td>
+                    <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error></td>
+                </tr>
+                <tr>
+                    <td><label for="location">Location</label></td>
+                    <td><input type="text" th:field="*{location}" id="location" placeholder="ex. Reykjavik"></td>
+                    <td th:if="${#fields.hasErrors('location')}" th:errors="*{location}">Location Error></td>
+                </tr>
+                <tr>
+                    <td><label for="date">Date</label></td>
+                    <td><input type="date" th:field="*{date}" id="date" placeholder="Date"></td>
+                    <td th:if="${#fields.hasErrors('date')}" th:errors="*{time}">Date Error></td>
+                </tr>
+                <tr>
+                    <td><label for="time">Time</label></td>
+                    <td><input type="time" th:field="*{time}" id="time" placeholder="time"></td>
+                    <td th:if="${#fields.hasErrors('time')}" th:errors="*{time}">Time Error></td>
+                </tr>
+                <tr>
+                    <td><label for="hobbyId">HobbyId</label></td>
+                    <td><input type="number" th:field="*{slots}" id="slots" placeholder="Slots"></td>
+                    <td th:if="${#fields.hasErrors('slots')}" th:errors="*{slots}">Slots Error</td>
+                </tr>
+                <tr>
+                    <td><label for="slots">Slots</label></td>
+                    <td>
+                        <select th:field="*{hobbyId}" id="hobbyId" placeholder="HobbyId">
+                            <option th:value="1" th:text="Football"></option>
+                            <option th:value="2" th:text="Basketball"></option>
+                            <option th:value="3" th:text="Hiking"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="description">Description</label></td>
+                    <td><input type="text" th:field="*{description}" id="description" placeholder="ex. Best ball buddies ever"></td>
+                    <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
+                </tr>
+                <tr class="buttons">
+                    <td><input class="button" type="submit" value="Add Session" name="action"></td>
+                    <td><input class="button button__cancel" type="submit" value="Cancel" name="action"></td>
+                </tr>
+            </table>
         </form>
     </body>
 </html>

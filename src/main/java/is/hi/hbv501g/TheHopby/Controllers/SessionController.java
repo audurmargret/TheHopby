@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +43,7 @@ public class SessionController {
 
 
     @RequestMapping(value = "/hobby/addSession", method = RequestMethod.POST)
-    public String addHobby(@Valid @ModelAttribute("sessions") Session session, @RequestParam String action, BindingResult result, HttpSession hSession, Model model) {
+    public String addHobby(@Valid @ModelAttribute("sessions") Session session, BindingResult result, @RequestParam String action, HttpSession hSession, Model model) {
         User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
         if(loggedInUser == null ){
             return "redirect:/";
