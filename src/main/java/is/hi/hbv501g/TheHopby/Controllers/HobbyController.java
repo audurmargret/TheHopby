@@ -31,16 +31,6 @@ public class HobbyController {
     public String index(Model model) {
         if(first) {
            //start();
-            /*hopbyService.delete(hopbyService.findSessionById(4));
-            hopbyService.delete(hopbyService.findSessionById(8));
-            hopbyService.delete(hopbyService.findSessionById(2));
-            hopbyService.delete(hopbyService.findSessionById(7));
-            hopbyService.delete(hopbyService.findSessionById(5));
-            hopbyService.delete(hopbyService.findByUserName("audur"));
-            hopbyService.delete(hopbyService.findByUserName("katla"));
-            hopbyService.delete(hopbyService.findByUserName("addi"));
-            hopbyService.delete(hopbyService.findByUserName("joi"));*/
-
         }
         return "Index";
     }
