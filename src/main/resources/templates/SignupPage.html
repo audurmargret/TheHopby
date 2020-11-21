@@ -4,9 +4,10 @@
         <meta charset="UTF-8">
         <title>Hopby - Login</title>
         <link rel="stylesheet" type="text/css" href="/css/LoginPage.css" />
-        <link rel="stylesheet" type="text/css" href="/css/Styles.css" />
+        <link rel="stylesheet" type="text/css" href="/css/Styles.css" /><link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     </head>
-    <body><
+    <body>
         <header>
             <div id="header-div">
                 <h1>Signup</h1>
@@ -21,13 +22,19 @@
         </header>
         <div id="big-div">
             <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="username" th:field="*{userName}" />
+                <div class="form">
+                    <div class="username">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" th:field="*{userName}" />
+                    </div>
 
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" th:value="*{password}" />
+                    <div class="password">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" th:value="*{password}" />
+                    </div>
 
-                <input type="submit" value="Sign up"/>
+                    <input class="button" type="submit" value="Sign up"/>
+                </div>
             </form>
         </div>
     </body>

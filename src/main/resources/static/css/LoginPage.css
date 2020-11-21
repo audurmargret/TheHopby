@@ -4,8 +4,29 @@
     padding: 5%;
     height: fit-content;
     background-color: lightblue;
+    width: 35%;
+    margin:auto;
+    text-align: center;
 }
 
 .error{
     color: #8E1600;
+}
+
+
+.form {
+    border: 3px grey;
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.username, .password, .button, .error {
+    padding: 1rem;
+}
+
+.button__signup {
+    padding: 0.5px 2px;
 }

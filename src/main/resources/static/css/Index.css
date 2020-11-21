@@ -1,4 +1,40 @@
 #big-div {
     padding: 20px;
     background-color: lightblue;
+    display: flex;
+    align-items: center;
+    height: 70vh;
+    width: 70%;
+    margin:auto;
 }
+
+.content {
+    width: 50%;
+
+}
+
+.login {
+    width: 30%;
+    margin: auto;
+    border-style: solid;
+    border-color: grey;
+    padding: 15px;
+    background-color: lightcyan;
+    text-align: center;
+
+}
+
+.image {
+    width: 100%
+}
+
+img{
+    width: 100%;
+}
+
+.about {
+    width: 50%;
+    text-align: center;
+    margin: -100px auto auto;
+}
+
