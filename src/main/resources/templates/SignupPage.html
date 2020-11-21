@@ -21,11 +21,9 @@
         </header>
         <div id="big-div">
             <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
-                <label for="username">Username:</label>
                 <input type="text" name="username" id="username" th:field="*{userName}" />
 
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" th:value="*{password}" />
+                <input type="text" name="password" id="password" th:value="*{password}" />
 
                 <input type="submit" value="Sign up"/>
             </form>

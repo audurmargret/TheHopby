@@ -40,6 +40,7 @@ public class HobbyController {
             hopbyService.delete(hopbyService.findByUserName("katla"));
             hopbyService.delete(hopbyService.findByUserName("addi"));
             hopbyService.delete(hopbyService.findByUserName("joi"));*/
+
         }
         return "Index";
     }
