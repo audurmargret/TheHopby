@@ -30,7 +30,7 @@ public class HobbyController {
     @RequestMapping("/")
     public String index(Model model) {
         if(first) {
-           //start();
+           start();
             /*hopbyService.delete(hopbyService.findSessionById(4));
             hopbyService.delete(hopbyService.findSessionById(8));
             hopbyService.delete(hopbyService.findSessionById(2));
