@@ -40,10 +40,10 @@ public class UserController {
         if(exists != null){
             hSession.setAttribute("LoggedInUser", user);
             System.out.println("LOGIN SESSION: " + hSession.getAttribute("LoggedInUser"));
-
+            model.addAttribute("error","");
             return "HobbyOverview";
         }
-
+        model.addAttribute("error", "wrong");
         return "LoginPage";
     }
 
@@ -73,7 +73,7 @@ public class UserController {
             hopbyService.save(user);
         }
 
-        model.addAttribute("hobby", hopbyService.findAllHobby());
+        model.addAttribute("error", "signup");
         return "LoginPage";
     }
 

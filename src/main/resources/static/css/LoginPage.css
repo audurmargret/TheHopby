@@ -5,3 +5,7 @@
     height: fit-content;
     background-color: lightblue;
 }
+
+.error{
+    color: #8E1600;
+}

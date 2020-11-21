@@ -117,19 +117,21 @@ public class HopbyServiceImplementation implements HopbyService {
     public Session joinSession(long id, User user) {
         Session session = findSessionById(id);
         System.out.println("Session to join " + session.getTitle());
+
         boolean exists = false;
-            for(int i=0; i<session.getUsers().size(); i++) {
-                if (session.getUsers().get(i).getUserName().equals((user.getUserName()))) {
-                    exists = true;
-                }
+
+        for(int i=0; i<session.getUsers().size(); i++) {
+            if (session.getUsers().get(i).getUserName().equals((user.getUserName()))) {
+                exists = true;
             }
-            if(!exists){
-                if(session.getSlotsAvailable()== 0){
-                    return null;
-                }
-                session.setUsers(user);
-                sessionRepository.save(session);
+        }
+        if(!exists){
+            if(session.getSlotsAvailable()== 0){
+                return null;
             }
+            session.setUsers(user);
+            sessionRepository.save(session);
+        }
         return session;
     }
 

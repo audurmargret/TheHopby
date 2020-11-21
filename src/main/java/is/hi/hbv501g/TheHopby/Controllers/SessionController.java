@@ -58,10 +58,9 @@ public class SessionController {
         if(action.equals("Add Session")){
             System.out.println("ACTION " + action);
             session.setSlotsAvailable(session.getSlots());
-
             hopbyService.save(session);
-            model.addAttribute("sessions", hopbyService.findAllSession());
         }
+
         return "redirect:/hobby/" + session.getHobbyId();
     }
 
