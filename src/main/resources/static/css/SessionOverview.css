@@ -1,4 +1,4 @@
-#big-div {
+.big-div {
     display: block;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -33,48 +33,42 @@ table {
     justify-content: space-evenly;
 }
 
-td#column-title {
+.table {
+    margin-bottom: 15px;
+}
+.table p {
+    margin:0;
+    padding-right: 5px;
+}
+
+#slotsTotal {
+    display:flex;
+    flex-direction: row;
+    margin-bottom: 0;
+}
+
+#slotsAvailable {
+    display:flex;
+    flex-direction: row;
+    margin: 0;
+    padding-right: 5px;
+}
+
+.title {
     font-size: 20px;
-    padding-bottom: 1.5rem;
+    margin-bottom: 15px;
 }
 
-td#column-id {
-    visibility: hidden;
+.table_button{
+    padding: 20px 20px 20px 0;
+    margin: 0;
 }
 
-td#column-location {
-
+#participants{
+    margin-bottom: 0;
+    margin-top: 15px;
 }
 
-td#column-date {
-
-}
-
-td#column-time {
-    padding-bottom: 1.5rem;
-}
-
-td#column-slotsAvailable {
-
-}
-
-td#column-slots {
-    padding-bottom: 1.5rem;
-}
-
-td#column-description {
-
-}
-
-td#column-users {
-    text-transform: capitalize;
-}
-
-td#column-button {
-    padding-left: 36.5rem;
-}
-
-td#column-text {
-    font-style: oblique;
-    padding-left: 31.5rem;
+#participantsList {
+    margin: 0;
 }
