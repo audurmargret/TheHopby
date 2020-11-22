@@ -59,7 +59,7 @@ td#column-slotsAvailable {
 }
 
 td#column-slots {
-    padding-bottom: 1.5rem;
+    visibility: hidden;
 }
 
 td#column-description {
