@@ -1,8 +1,8 @@
 package is.hi.hbv501g.TheHopby.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.validator.constraints.UniqueElements;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Users")
@@ -12,15 +12,15 @@ public class User {
     private String userName;
 
     private String password;
-    private String name;
+
 
     public User(){
     }
 
-    public User(String userName, String password, String name) {
+    public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
-        this.name = name;
+
     }
 
     public String getUserName() {
@@ -39,11 +39,5 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

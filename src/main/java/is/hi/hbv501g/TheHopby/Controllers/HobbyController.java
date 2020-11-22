@@ -81,10 +81,10 @@ public class HobbyController {
         hopbyService.save(football);
         hopbyService.save(basketball);
         hopbyService.save(hiking);
-        User u1 = new User("audur", "123", "Audur Margret");
-        User u2 = new User("katla", "321", "Katla Rún");
-        User u3 = new User("addi", "987", "Arnþór");
-        User u4 = new User("joi", "789", "Jóhann");
+        User u1 = new User("audur", "123");
+        User u2 = new User("katla", "321");
+        User u3 = new User("addi", "987");
+        User u4 = new User("joi", "789");
         hopbyService.save(u1);
         hopbyService.save(u2);
         hopbyService.save(u3);
