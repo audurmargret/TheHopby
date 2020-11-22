@@ -49,21 +49,16 @@ public class SessionController {
             return "redirect:/";
         }
         if(action.equals("Cancel")){
-            System.out.println("CANCEL");
             return "redirect:/hobby/all";
         }
         if (result.hasErrors()) {
-            System.out.println("halló");
-            System.out.println(result.getFieldError());
             return "AddSession";
         }
         if(action.equals("Add Session")){
-            System.out.println("ACTION " + action);
             session.setSlotsAvailable(session.getSlots());
             hopbyService.save(session);
         }
-
-        return "redirect:/hobby/" + session.getHobbyId();
+        return "redirect:/joinSession/" + session.getId();
     }
 
 
