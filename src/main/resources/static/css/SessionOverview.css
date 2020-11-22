@@ -51,7 +51,7 @@ td#column-date {
 }
 
 td#column-time {
-
+    padding-bottom: 1.5rem;
 }
 
 td#column-slotsAvailable {
@@ -59,7 +59,7 @@ td#column-slotsAvailable {
 }
 
 td#column-slots {
-
+    padding-bottom: 1.5rem;
 }
 
 td#column-description {
@@ -68,4 +68,13 @@ td#column-description {
 
 td#column-users {
     text-transform: capitalize;
+}
+
+td#column-button {
+    padding-left: 36.5rem;
+}
+
+td#column-text {
+    font-style: oblique;
+    padding-left: 31.5rem;
 }
