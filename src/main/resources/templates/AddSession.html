@@ -45,12 +45,12 @@
                     <td th:if="${#fields.hasErrors('time')}" th:errors="*{time}">Time Error></td>
                 </tr>
                 <tr>
-                    <td><label for="hobbyId">HobbyId</label></td>
+                    <td><label for="hobbyId">Slots</label></td>
                     <td><input type="number" th:field="*{slots}" id="slots" placeholder="Slots"></td>
                     <td th:if="${#fields.hasErrors('slots')}" th:errors="*{slots}">Slots Error</td>
                 </tr>
                 <tr>
-                    <td><label for="slots">Slots</label></td>
+                    <td><label for="slots">Hobby</label></td>
                     <td>
                         <select th:field="*{hobbyId}" id="hobbyId" placeholder="HobbyId">
                             <option th:value="1" th:text="Football"></option>

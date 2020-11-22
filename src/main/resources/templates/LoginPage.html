@@ -40,6 +40,7 @@
                     <div class="error" th:switch="${error}">
                         <p th:case="wrong">Username and password don't match, try again</p>
                         <p th:case="signup">This user already exists, try login</p>
+                        <p th:case="approved">Account created - please login</p>
                     </div>
                 </div>
             </form>

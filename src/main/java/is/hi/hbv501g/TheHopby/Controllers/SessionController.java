@@ -48,13 +48,14 @@ public class SessionController {
         if(loggedInUser == null ){
             return "redirect:/";
         }
+        if(action.equals("Cancel")){
+            System.out.println("CANCEL");
+            return "redirect:/hobby/all";
+        }
         if (result.hasErrors()) {
             System.out.println("halló");
             System.out.println(result.getFieldError());
             return "AddSession";
-        }
-        if(action.equals("Cancel")){
-            System.out.println("CANCEL");
         }
         if(action.equals("Add Session")){
             System.out.println("ACTION " + action);

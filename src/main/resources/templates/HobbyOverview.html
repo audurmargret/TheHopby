@@ -24,33 +24,31 @@
 
         <div id="big-div">
             <div id="small-div">
-                <div class="hobby">
+                <div class="hobby" th:onclick="'window.location.href=\'' + @{/hobby/1} + '\''" style="cursor: pointer">
                     <p>
                         Football
                     </p>
                     <div class="image">
                         <img src="../img/football.png">
                     </div>
-                    <a th:href="@{/hobby/1}">Open</a>
                 </div>
 
-                <div class="hobby">
+                <div class="hobby" th:onclick="'window.location.href=\'' + @{/hobby/2} + '\''" style="cursor: pointer">
                     <p>
                         Basketball
                     </p>
                     <div class="image">
                         <img src="../img/basket.png">
                     </div>
-                    <a th:href="@{/hobby/2}">Open</a>
+
                 </div>
-                <div class="hobby">
+                <div class="hobby" th:onclick="'window.location.href=\'' + @{/hobby/3} + '\''" style="cursor: pointer">
                     <p>
                         Hiking
                     </p>
                     <div class="image">
                         <img src="../img/hike.png">
                     </div>
-                    <a th:href="@{/hobby/3}">Open</a>
                 </div>
 
             </div>

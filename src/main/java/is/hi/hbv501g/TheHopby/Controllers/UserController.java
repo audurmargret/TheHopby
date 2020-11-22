@@ -71,9 +71,12 @@ public class UserController {
         User exist = hopbyService.findByUserName(user.getUserName());
         if(exist == null) {
             hopbyService.save(user);
+            model.addAttribute("error", "approved");
+        }
+        else {
+            model.addAttribute("error", "signup");
         }
 
-        model.addAttribute("error", "signup");
         return "LoginPage";
     }
 
