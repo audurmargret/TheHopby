@@ -1,14 +1,14 @@
 package is.hi.hbv501g.TheHopby.Entities;
 
-import org.omg.CORBA.SystemException;
+import com.sun.istack.NotNull;
+import org.aspectj.lang.annotation.After;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Time;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -19,17 +19,33 @@ public class Session {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotEmpty()
     private String title;
+
+    @NotEmpty
     private String location;
+
+    @NotNull
+
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
+
+    @NotNull
     @DateTimeFormat(pattern="HH:mm")
     private LocalTime time;
+
     @OneToMany
     private List<User> users;
+
     private int slotsAvailable;
+
+
+    @Min(1)
     private int slots;
+
+    @NotNull
     private long hobbyId;
+
     private String description;
 
     public Session() {

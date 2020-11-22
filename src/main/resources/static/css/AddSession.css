@@ -1,32 +1,26 @@
-#outer {
+table {
     display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    height: fit-content;
-    padding: 20px;
-    justify-content: flex-end;
-    background-color: lightblue;
-}
-
-#inner1 {
+    justify-content: center;
+    background-color: lightcyan;
     width: 40%;
+    margin: 50px auto;
+    padding: 25px ;
+    border: grey solid;
 }
 
-#inner2 {
-    width: 40%;
+td {
+    padding: 10px;
 }
 
-#inner3 {
-    width: 25%;
-    padding-top: 15px;
+.button__cancel {
+    background-color: lightcyan;
+    color: #215559;
 }
 
-.inner-class {
-    padding-bottom: 5px;
-}
-
-#input-div {
-    color: lightgrey;
+.buttons {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 
