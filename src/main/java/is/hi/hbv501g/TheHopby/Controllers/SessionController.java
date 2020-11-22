@@ -52,15 +52,23 @@ public class SessionController {
             return "redirect:/hobby/all";
         }
         if (result.hasErrors()) {
+            if(!hopbyService.validTime(session.getDate(), session.getTime())){
+                System.out.println("ADD SESSION DAGS I FORTIÐ");
+                model.addAttribute("validDate","notValid");
+            }
             return "AddSession";
         }
         if(action.equals("Add Session")){
+            if(!hopbyService.validTime(session.getDate(), session.getTime())){
+                System.out.println("ADD SESSION DAGS I FORTIÐ");
+                model.addAttribute("validDate","notValid");
+                return "AddSession";
+            }
             session.setSlotsAvailable(session.getSlots());
             hopbyService.save(session);
         }
         return "redirect:/joinSession/" + session.getId();
     }
-
 
     @RequestMapping(value = "/openSession/{id}", method = RequestMethod.GET)
     public String openSession(@PathVariable("id") long id, HttpSession hSession, Model model) {

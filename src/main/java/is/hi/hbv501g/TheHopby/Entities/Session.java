@@ -27,7 +27,6 @@ public class Session {
     private String location;
 
     @NotNull
-
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate date;
 

@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.client.Hop;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -154,4 +156,20 @@ public class HopbyServiceImplementation implements HopbyService {
     }
 
 
+    public boolean validTime(LocalDate date, LocalTime time){
+        if(date==null || time==null){
+            return false;
+        }
+        LocalTime timeNow = LocalTime.now();
+        LocalDate dateNow = LocalDate.now();
+        if(dateNow.isEqual(date)){
+            if(timeNow.isBefore(time)){
+                return true;
+            }
+        }
+        else if(dateNow.isBefore(date)){
+            return true;
+        }
+        return false;
+    }
 }

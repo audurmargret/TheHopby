@@ -4,6 +4,8 @@ import is.hi.hbv501g.TheHopby.Entities.Hobby;
 import is.hi.hbv501g.TheHopby.Entities.Session;
 import is.hi.hbv501g.TheHopby.Entities.User;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +35,7 @@ public interface HopbyService {
     public User findByUserName(String username);
 
     User login(User user);
+
+    public boolean validTime(LocalDate date, LocalTime time);
 
 }

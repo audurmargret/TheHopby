@@ -37,12 +37,13 @@
                 <tr>
                     <td><label for="date">Date</label></td>
                     <td><input type="date" th:field="*{date}" id="date" placeholder="Date"></td>
-                    <td th:if="${#fields.hasErrors('date')}" th:errors="*{time}">Date Error></td>
                 </tr>
                 <tr>
                     <td><label for="time">Time</label></td>
                     <td><input type="time" th:field="*{time}" id="time" placeholder="time"></td>
-                    <td th:if="${#fields.hasErrors('time')}" th:errors="*{time}">Time Error></td>
+                    <td th:switch="${validDate}">
+                        <p th:case="notValid">not valid date/time</p>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="hobbyId">Slots</label></td>
