@@ -38,10 +38,13 @@
                             <td id="column-location" th:text="${sessionss.location}"></td>
                             <td id="column-date" th:text="${sessionss.date}"></td>
                             <td id="column-time" th:text="${sessionss.time}"></td>
+
+
+
                             <td id="column-slotsAvailable" th:text="${sessionss.slotsAvailable}"></td>
                             <td id="column-slots" th:text="${sessionss.slots}"></td>
                             <td id="column-description" th:text="${sessionss.description}"></td>
-                            <td><a th:href="@{/openSession/{id}(id=${sessionss.id})}">Open</a></td>
+                            <td id="column-button" ><a th:href="@{/openSession/{id}(id=${sessionss.id})}">Open</a></td>
                         </tr>
                         </tbody>
                     </table>

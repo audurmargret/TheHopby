@@ -43,6 +43,7 @@
                             <td id="column-slots" th:text="${sessionss.slots}"></td>
                             <td id="column-description" th:text="${sessionss.description}"></td>
                             <td id="column-users" th:each="users : ${sessionss.users}">
+                                <p id="column-text">Participants</p>
                                 <p th:text="${users.userName}"></p>
                             </td>
 
