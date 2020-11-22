@@ -52,19 +52,19 @@ s<!DOCTYPE html>
 
                                 <td>
                                     <div th:switch="${joined}">
-                                        <p th:case="joined"><a th:href="@{/leaveSession/{id}(id=${sessionss.id})}">Leave</a></p>
-                                        <p th:case="notJoined"><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></p>
+                                        <p th:case="joined"><a class="button" th:href="@{/leaveSession/{id}(id=${sessionss.id})}">Leave</a></p>
+                                        <p th:case="notJoined"><a class="button" th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></p>
                                         <p th:case="full">This session is full</p>
                                     </div>
                                 </td>
 
                                 <td>
                                     <div th:switch="${host}">
-                                        <p th:case="first"><a th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></p>
+                                        <p th:case="first"><a class="button" th:href="@{/delete/{id}(id=${sessionss.id})}">Delete</a></p>
                                         <p th:case="*">You do not have permission to delete this session</p>
                                     </div>
                                 </td>
-                                <td><a th:href="@{/hobby/{id}(id=${sessionss.hobbyId})}">Back</a></td>
+                                <td><a class="button" th:href="@{/hobby/{id}(id=${sessionss.hobbyId})}">Back</a></td>
                             </tr>
                         </tbody>
                     </table>
