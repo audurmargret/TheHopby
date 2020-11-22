@@ -2,6 +2,7 @@ package is.hi.hbv501g.TheHopby.Entities;
 
 import com.sun.istack.NotNull;
 import org.aspectj.lang.annotation.After;
+import org.hibernate.annotations.ManyToAny;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -34,7 +35,7 @@ public class Session {
     @DateTimeFormat(pattern="HH:mm")
     private LocalTime time;
 
-    @OneToMany
+    @ManyToMany
     private List<User> users;
 
     private int slotsAvailable;
@@ -48,6 +49,7 @@ public class Session {
 
     private String description;
 
+
     public Session() {
     }
 
@@ -56,11 +58,11 @@ public class Session {
         this.location = location;
         this.date = date;
         this.time = time;
-        //users = new ArrayList<User>();
         this.slots = slots;
         this.slotsAvailable = slots;
         this.hobbyId = hobbyId;
         this.description = description;
+
     }
 
     public long getId() {
@@ -153,4 +155,5 @@ public class Session {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
