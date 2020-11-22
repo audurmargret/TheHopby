@@ -30,7 +30,7 @@ public class HobbyController {
     @RequestMapping("/")
     public String index(Model model) {
         if(first) {
-            start();
+            //start();
         }
         return "Index";
     }

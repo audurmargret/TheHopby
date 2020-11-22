@@ -50,7 +50,8 @@
                             <td>
                                 <div th:switch="${joined}">
                                     <p th:case="joined"><a th:href="@{/leaveSession/{id}(id=${sessionss.id})}">Leave</a></p>
-                                    <p th:case="*"><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></p>
+                                    <p th:case="notJoined"><a th:href="@{/joinSession/{id}(id=${sessionss.id})}">Join</a></p>
+                                    <p th:case="full">This session is full</p>
                                 </div>
                             </td>
 

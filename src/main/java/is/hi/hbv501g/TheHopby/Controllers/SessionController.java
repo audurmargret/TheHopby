@@ -76,6 +76,8 @@ public class SessionController {
         Session session = hopbyService.findSessionById(id);
         model.addAttribute("sessions", session);
         boolean joined = false;
+
+        // Leyfir fyrsta user að delete sessioni
         if(!session.getUsers().isEmpty() && session.getUsers().get(0).getUserName().equals(loggedInUser.getUserName())){
             System.out.println("hér");
             model.addAttribute("host", "first");
@@ -84,14 +86,16 @@ public class SessionController {
         else {
             model.addAttribute("host", "");
         }
-        System.out.println(" " + joined);
+
+        // Takki birtist sem join eða leave
         if(joined || userInSession(loggedInUser, session)){
             model.addAttribute("joined", "joined");
-            System.out.println("JOINED");
+        }
+        else if(session.getSlotsAvailable()<1){
+            model.addAttribute("joined", "full");
         }
         else{
             model.addAttribute("joined", "notJoined");
-            System.out.println("NOTJOINED ");
         }
         return "ViewSession";
     }
