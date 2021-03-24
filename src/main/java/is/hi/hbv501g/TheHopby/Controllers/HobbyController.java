@@ -5,18 +5,18 @@ import is.hi.hbv501g.TheHopby.Entities.Session;
 import is.hi.hbv501g.TheHopby.Entities.User;
 import is.hi.hbv501g.TheHopby.Services.HopbyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-@Controller
+@RestController
 public class HobbyController {
 
     private boolean first = true;
@@ -31,15 +31,15 @@ public class HobbyController {
     @RequestMapping("/")
     public String index(Model model) {
         if(first) {
-            start();
+            //start();
         }
         return "Index";
     }
 
     @RequestMapping("/home")
     public List<Hobby> home(Model model, HttpSession hSession){
-        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
-        /*if(loggedInUser == null ){
+        /*User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
+        if(loggedInUser == null ){
             return "redirect:/";
         }*/
         return hopbyService.findAllHobby();
@@ -59,10 +59,11 @@ public class HobbyController {
 
     }
 
+    
     @RequestMapping(value="/hobby/all", method = RequestMethod.GET)
     public List<Session> goToAllSessions(Model model, HttpSession hSession){
-        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
-        /*if(loggedInUser == null ){
+        /*User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
+        if(loggedInUser == null ){
             return "redirect:/";
         }*/
         //model.addAttribute("sessions", hopbyService.findAllSession());

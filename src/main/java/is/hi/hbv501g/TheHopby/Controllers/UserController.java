@@ -6,13 +6,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-@Controller
+@RestController
 public class UserController {
 
     private HopbyService hopbyService;
@@ -30,13 +34,19 @@ public class UserController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession hSession){
-        if(result.hasErrors()){
-            return "LoginPage";
-        }
+    public User loginPOST(@Valid User user, BindingResult result, Model model, HttpSession hSession){
+        /*if(result.hasErrors()){
+            return result.getAllErrors().toString();
+        }*/
         model.addAttribute("hobby",hopbyService.findAllHobby());
         User exists = hopbyService.login(user);
-
+        if(exists != null) {
+        	System.out.print(exists.getUserName());
+        	return exists;        	
+        }
+        
+        return null;
+/*
         if(exists != null){
             hSession.setAttribute("LoggedInUser", user);
             System.out.println("LOGIN SESSION: " + hSession.getAttribute("LoggedInUser"));
@@ -44,7 +54,7 @@ public class UserController {
             return "HobbyOverview";
         }
         model.addAttribute("error", "wrong");
-        return "LoginPage";
+        return "LoginPage";*/
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -81,9 +91,10 @@ public class UserController {
     }
 
     @RequestMapping(value= "/users", method = RequestMethod.GET)
-    public String usersGET(Model model){
+    public List<User> usersGET(Model model){
         model.addAttribute("users", hopbyService.findAll());
-        return "Users";
+        
+        return hopbyService.findAll();
     }
 
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)

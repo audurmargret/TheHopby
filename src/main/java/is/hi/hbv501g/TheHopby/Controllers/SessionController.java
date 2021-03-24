@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-@Controller
+@RestController
 public class SessionController {
 
     private HopbyService hopbyService;
@@ -71,11 +72,11 @@ public class SessionController {
     }
 
     @RequestMapping(value = "/openSession/{id}", method = RequestMethod.GET)
-    public String openSession(@PathVariable("id") long id, HttpSession hSession, Model model) {
+    public Session openSession(@PathVariable("id") long id, HttpSession hSession, Model model) {
         User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
-        if(loggedInUser == null ){
+        /*if(loggedInUser == null ){
             return "redirect:/";
-        }
+        }*/
         Session session = hopbyService.findSessionById(id);
         model.addAttribute("sessions", session);
         boolean joined = false;
@@ -100,7 +101,7 @@ public class SessionController {
         else{
             model.addAttribute("joined", "notJoined");
         }
-        return "ViewSession";
+        return session;
     }
 
 
