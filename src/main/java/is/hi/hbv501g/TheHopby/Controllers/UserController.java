@@ -74,20 +74,11 @@ public class UserController {
 
 
     @RequestMapping(value="/signup", method = RequestMethod.POST)
-    public String signupPOST(@Valid User user, BindingResult result, Model model){
-        if(result.hasErrors()){
-            return "SignupPage";
-        }
-        User exist = hopbyService.findByUserName(user.getUserName());
-        if(exist == null) {
-            hopbyService.save(user);
-            model.addAttribute("error", "approved");
-        }
-        else {
-            model.addAttribute("error", "signup");
-        }
+    public User signupPOST(String name, String userName, String password){
+    	User user = new User(userName, password);
+        hopbyService.save(user);
 
-        return "LoginPage";
+        return user;
     }
 
     @RequestMapping(value= "/users", method = RequestMethod.GET)
