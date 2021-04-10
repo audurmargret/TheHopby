@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -44,31 +47,14 @@ public class SessionController {
 
 
     @RequestMapping(value = "/hobby/addSession", method = RequestMethod.POST)
-    public String addHobby(@Valid @ModelAttribute("sessions") Session session, BindingResult result, @RequestParam String action, HttpSession hSession, Model model) {
-        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
-        if(loggedInUser == null ){
-            return "redirect:/";
-        }
-        if(action.equals("Cancel")){
-            return "redirect:/hobby/all";
-        }
-        if (result.hasErrors()) {
-            if(!hopbyService.validTime(session.getDate(), session.getTime())){
-                System.out.println("ADD SESSION DAGS I FORTIÐ");
-                model.addAttribute("validDate","notValid");
-            }
-            return "AddSession";
-        }
-        if(action.equals("Add Session")){
-            if(!hopbyService.validTime(session.getDate(), session.getTime())){
-                System.out.println("ADD SESSION DAGS I FORTIÐ");
-                model.addAttribute("validDate","notValid");
-                return "AddSession";
-            }
-            session.setSlotsAvailable(session.getSlots());
-            hopbyService.save(session);
-        }
-        return "redirect:/joinSession/" + session.getId();
+    public Session addHobby(String title, String date, String time, int slots, int hobbyId, String description, String location) {
+
+    	LocalDate localDate = LocalDate.parse(date);
+    	LocalTime localTime = LocalTime.parse(time);
+    	
+    	Session newSession = new Session(title, location, localDate, localTime, slots, hobbyId, description);
+    	hopbyService.save(newSession);
+    	return newSession;
     }
 
     @RequestMapping(value = "/openSession/{id}", method = RequestMethod.GET)
