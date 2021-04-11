@@ -47,10 +47,12 @@ public class SessionController {
 
 
     @RequestMapping(value = "/hobby/addSession", method = RequestMethod.POST)
-    public Session addHobby(String title, String date, String time, int slots, int hobbyId, String description, String location) {
+    public Session addHobby(String title, String date, int time, int slots, int hobbyId, String description, String location) {
 
+    	String stringTime = Integer.toString(time);
+    	stringTime = stringTime.substring(0,2).concat(":").concat(stringTime.substring(2,4));
     	LocalDate localDate = LocalDate.parse(date);
-    	LocalTime localTime = LocalTime.parse(time);
+    	LocalTime localTime = LocalTime.parse(stringTime);
     	
     	Session newSession = new Session(title, location, localDate, localTime, slots, hobbyId, description);
     	hopbyService.save(newSession);
