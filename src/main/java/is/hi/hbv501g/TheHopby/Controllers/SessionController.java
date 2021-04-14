@@ -93,18 +93,27 @@ public class SessionController {
     }
 
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     public String deleteSession(@PathVariable("id") long id, HttpSession hSession, Model model) {
-        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
+        /*User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
         if(loggedInUser == null ){
             return "redirect:/";
         }
-
+*/
         hopbyService.delete(hopbyService.findSessionById(id));
         model.addAttribute("sessions", hopbyService.findAllSession());
         return "SessionOverview";
     }
-
+    
+    @RequestMapping(value="/deleteAll/{id}", method = RequestMethod.DELETE)
+    public String deleteAllSession(@PathVariable("id") long id) {
+    	for (int i =  0; i<id; i++) {
+    		hopbyService.delete(hopbyService.findSessionById(id+1));
+    	}
+    	return "Success";
+    }
+    
+    
     @RequestMapping(value = "/joinSession/{id}", method = RequestMethod.GET)
     public String joinSession(@PathVariable("id") long id,HttpSession hSession, Model model) {
         User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
