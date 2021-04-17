@@ -114,17 +114,18 @@ public class SessionController {
     }
     
     
-    @RequestMapping(value = "/joinSession/{id}", method = RequestMethod.GET)
-    public String joinSession(@PathVariable("id") long id,HttpSession hSession, Model model) {
-        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
+    @RequestMapping(value = "/joinSession/{id}/{username}", method = RequestMethod.GET)
+    public Session joinSession(@PathVariable("id") long id, @PathVariable("username") String username, HttpSession hSession, Model model) {
+        /*User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
         if(loggedInUser == null ){
             return "redirect:/";
-        }
-        hopbyService.joinSession(id, loggedInUser);
-        model.addAttribute("sessions", hopbyService.findSessionById(id));
-        model.addAttribute("joined", "leave");
-
-        return "redirect:/openSession/" + id;
+        }*/
+    	User user = hopbyService.findByUserName(username);
+        hopbyService.joinSession(id, user);
+        //model.addAttribute("sessions", hopbyService.findSessionById(id));
+        //model.addAttribute("joined", "leave");
+        Session session = hopbyService.findSessionById(id);
+        return session;
     }
 
     @RequestMapping(value= "/leaveSession/{id}", method = RequestMethod.GET)
