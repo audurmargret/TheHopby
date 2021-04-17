@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,13 @@ public class UserController {
         return "LoginPage";
     }
 
+    @RequestMapping(value = "/deleteUser/{username}", method = RequestMethod.DELETE)
+    public String deleteSession(@PathVariable("username") String username, HttpSession hSession, Model model) {
+        
+        hopbyService.delete(hopbyService.findByUserName(username));
+        return "Success";
+    }
+    
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User loginPOST(@Valid User user, BindingResult result, Model model, HttpSession hSession){
@@ -75,7 +83,7 @@ public class UserController {
 
     @RequestMapping(value="/signup", method = RequestMethod.POST)
     public User signupPOST(String name, String userName, String password){
-    	User user = new User(userName, password);
+    	User user = new User(userName, password, name);
         hopbyService.save(user);
 
         return user;

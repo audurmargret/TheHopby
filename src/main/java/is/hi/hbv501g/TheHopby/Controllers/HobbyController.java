@@ -83,14 +83,6 @@ public class HobbyController {
         hopbyService.save(football);
         hopbyService.save(basketball);
         hopbyService.save(hiking);
-        User u1 = new User("audur", "123");
-        User u2 = new User("katla", "321");
-        User u3 = new User("addi", "987");
-        User u4 = new User("joi", "789");
-        hopbyService.save(u1);
-        hopbyService.save(u2);
-        hopbyService.save(u3);
-        hopbyService.save(u4);
         Session s1 = new Session("Football boyyys", "Seljaskóli", LocalDate.parse("2020-12-24"), LocalTime.parse("18:00"), 16, 1, "Jólabolti jeij gaman");
         Session s2 = new Session("Bumbubolti", "Breiðholtsskóli", LocalDate.parse("2020-12-01"), LocalTime.parse("21:30"), 20, 2, "Yeee");
         Session s3 = new Session("Georg og félagar", "Ölduselsskóli", LocalDate.parse("2020-11-30"), LocalTime.parse("21:00"), 8, 1, "Vinsælir alls staðar");
