@@ -62,12 +62,12 @@ public class HobbyController {
     
     @RequestMapping(value="/hobby/all", method = RequestMethod.GET)
     public List<Session> goToAllSessions(Model model, HttpSession hSession){
-        /*User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
-        if(loggedInUser == null ){
-            return "redirect:/";
-        }*/
-        //model.addAttribute("sessions", hopbyService.findAllSession());
         return hopbyService.findAllSession();
+    }
+    
+    @RequestMapping(value="/mySessions/{username}", method = RequestMethod.GET)
+    public List<Session> getMySessions(@PathVariable("username") String username) {
+    	return hopbyService.findMySessions(username);
     }
 /*
     @RequestMapping("/login")

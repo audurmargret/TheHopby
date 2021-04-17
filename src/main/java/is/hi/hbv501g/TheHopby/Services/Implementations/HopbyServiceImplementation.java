@@ -1,6 +1,7 @@
 package is.hi.hbv501g.TheHopby.Services.Implementations;
 
 import is.hi.hbv501g.TheHopby.Entities.Hobby;
+import is.hi.hbv501g.TheHopby.Entities.MySessions;
 import is.hi.hbv501g.TheHopby.Entities.Session;
 import is.hi.hbv501g.TheHopby.Entities.User;
 import is.hi.hbv501g.TheHopby.Repositories.HobbyRepository;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -172,4 +174,22 @@ public class HopbyServiceImplementation implements HopbyService {
         }
         return false;
     }
+
+
+
+	public List<Session> findMySessions(String username) {
+		List<Session> mySessions = new ArrayList<Session>();
+		
+		List<MySessions> mySessionsId = sessionRepository.findMySessions(username);
+		
+		for(int i =0; i<mySessionsId.size(); i++) {
+			System.out.println(mySessionsId.get(i));
+			long id = mySessionsId.get(i).getSession();
+			Session session = sessionRepository.findSessionById(id);
+			mySessions.add(session);
+			
+		}
+		
+		return mySessions;
+	}
 }

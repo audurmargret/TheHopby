@@ -1,5 +1,6 @@
 package is.hi.hbv501g.TheHopby.Repositories;
 
+import is.hi.hbv501g.TheHopby.Entities.MySessions;
 import is.hi.hbv501g.TheHopby.Entities.Session;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,6 +26,9 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
 
     @Query(value ="SELECT p FROM Session p WHERE p.id = ?1")
     Session findSessionById(long id);
+    
+    @Query(value ="SELECT p FROM MySessions p WHERE p.users_user_name = ?1")
+    List<MySessions> findMySessions(String username);
 
 
 

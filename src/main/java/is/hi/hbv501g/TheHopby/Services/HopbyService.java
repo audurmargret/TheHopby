@@ -23,6 +23,7 @@ public interface HopbyService {
     /*public Session updateSession(long id);*/
     public List<Session> findSessionByHobby(long hobbyId);
     public List<Session> findAllSession();
+    public List<Session> findMySessions(String username);
 
     public Session findSessionById(long id);
     public Session joinSession(long id, User user);
