@@ -66,11 +66,11 @@ public class SessionController {
             return "redirect:/";
         }*/
         Session session = hopbyService.findSessionById(id);
-        model.addAttribute("sessions", session);
-        boolean joined = false;
+        //model.addAttribute("sessions", session);
+        //boolean joined = false;
 
         // Leyfir fyrsta user að delete sessioni
-        if(!session.getUsers().isEmpty() && session.getUsers().get(0).getUserName().equals(loggedInUser.getUserName())){
+        /*if(!session.getUsers().isEmpty() && session.getUsers().get(0).getUserName().equals(loggedInUser.getUserName())){
             System.out.println("hér");
             model.addAttribute("host", "first");
             joined = true;
@@ -88,7 +88,7 @@ public class SessionController {
         }
         else{
             model.addAttribute("joined", "notJoined");
-        }
+        }*/
         return session;
     }
 
