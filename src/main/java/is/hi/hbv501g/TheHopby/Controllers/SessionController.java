@@ -61,34 +61,8 @@ public class SessionController {
 
     @RequestMapping(value = "/openSession/{id}", method = RequestMethod.GET)
     public Session openSession(@PathVariable("id") long id, HttpSession hSession, Model model) {
-        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
-        /*if(loggedInUser == null ){
-            return "redirect:/";
-        }*/
+
         Session session = hopbyService.findSessionById(id);
-        //model.addAttribute("sessions", session);
-        //boolean joined = false;
-
-        // Leyfir fyrsta user að delete sessioni
-        /*if(!session.getUsers().isEmpty() && session.getUsers().get(0).getUserName().equals(loggedInUser.getUserName())){
-            System.out.println("hér");
-            model.addAttribute("host", "first");
-            joined = true;
-        }
-        else {
-            model.addAttribute("host", "");
-        }
-
-        // Takki birtist sem join eða leave
-        if(joined || userInSession(loggedInUser, session)){
-            model.addAttribute("joined", "joined");
-        }
-        else if(session.getSlotsAvailable()<1){
-            model.addAttribute("joined", "full");
-        }
-        else{
-            model.addAttribute("joined", "notJoined");
-        }*/
         return session;
     }
 
@@ -116,29 +90,21 @@ public class SessionController {
     
     @RequestMapping(value = "/joinSession/{id}/{username}", method = RequestMethod.GET)
     public Session joinSession(@PathVariable("id") long id, @PathVariable("username") String username, HttpSession hSession, Model model) {
-        /*User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
-        if(loggedInUser == null ){
-            return "redirect:/";
-        }*/
+
     	User user = hopbyService.findByUserName(username);
         hopbyService.joinSession(id, user);
-        //model.addAttribute("sessions", hopbyService.findSessionById(id));
-        //model.addAttribute("joined", "leave");
+
         Session session = hopbyService.findSessionById(id);
         return session;
     }
 
-    @RequestMapping(value= "/leaveSession/{id}", method = RequestMethod.GET)
-    public String leaveSession(@PathVariable("id") long id, HttpSession hSession, Model model) {
-        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
-        if(loggedInUser == null){
-            return "redirect:/";
-        }
+    @RequestMapping(value= "/leaveSession/{id}/{username}", method = RequestMethod.GET)
+    public Session leaveSession(@PathVariable("id") long id, @PathVariable("username") String username, HttpSession hSession, Model model) {
+    	
+        hopbyService.leaveSession(id, hopbyService.findByUserName(username));
 
-        hopbyService.leaveSession(id, hopbyService.findByUserName(loggedInUser.getUserName()));
-        model.addAttribute("sessions", hopbyService.findSessionById(id));
-        model.addAttribute("joined", "joined");
-        return "redirect:/openSession/" + id;
+        Session session = hopbyService.findSessionById(id);
+        return session;
 
 
     }
