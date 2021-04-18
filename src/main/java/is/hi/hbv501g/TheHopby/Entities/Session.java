@@ -10,6 +10,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -65,6 +66,7 @@ public class Session {
         this.hobbyId = hobbyId;
         this.description = description;
         this.host = host;
+        this.users = new ArrayList<User>();
 
     }
 
@@ -113,7 +115,7 @@ public class Session {
     }
 
     public void setUsers(User user) {
-        this.users.add(user);
+        users.add(user);
         System.out.println("Bæta við user í session lista");
         System.out.println("listinn: " + users);
         slotsAvailable--;

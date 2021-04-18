@@ -56,6 +56,8 @@ public class SessionController {
     	
     	Session newSession = new Session(title, location, localDate, localTime, slots, hobbyId, description, username);
     	hopbyService.save(newSession);
+    	joinSessionREST(newSession.getId(), username);
+    	
     	return newSession;
     }
 
@@ -89,7 +91,7 @@ public class SessionController {
     
     
     @RequestMapping(value = "/joinSession/{id}/{username}", method = RequestMethod.GET)
-    public Session joinSession(@PathVariable("id") long id, @PathVariable("username") String username, HttpSession hSession, Model model) {
+    public Session joinSessionREST(@PathVariable("id") long id, @PathVariable("username") String username) {
 
     	User user = hopbyService.findByUserName(username);
         hopbyService.joinSession(id, user);
