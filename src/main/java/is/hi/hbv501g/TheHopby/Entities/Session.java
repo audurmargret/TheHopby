@@ -38,6 +38,8 @@ public class Session {
     private List<User> users;
 
     private int slotsAvailable;
+    
+
 
 
     @Min(1)
@@ -48,11 +50,12 @@ public class Session {
 
     private String description;
 
+    private String host;
 
     public Session() {
     }
 
-    public Session(String title, String location, LocalDate date, LocalTime time, int slots, long hobbyId, String description) {
+    public Session(String title, String location, LocalDate date, LocalTime time, int slots, long hobbyId, String description, String host) {
         this.title = title;
         this.location = location;
         this.date = date;
@@ -61,6 +64,7 @@ public class Session {
         this.slotsAvailable = slots;
         this.hobbyId = hobbyId;
         this.description = description;
+        this.host = host;
 
     }
 
@@ -153,6 +157,13 @@ public class Session {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public String getHost() {
+    	return host;
+    }
+    public void setHost(String host) {
+    	this.host = host;
     }
 
 }
