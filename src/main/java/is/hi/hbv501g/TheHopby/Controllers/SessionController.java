@@ -38,6 +38,10 @@ public class SessionController {
     public Session addHobby(String title, String date, int time, int slots, int hobbyId, String description, String location, String username) {
 
     	String stringTime = Integer.toString(time);
+    	if(stringTime.length() == 3) {
+    		String zero = "0";
+    		stringTime = zero.concat(stringTime);
+    	}
     	stringTime = stringTime.substring(0,2).concat(":").concat(stringTime.substring(2,4));
     	LocalDate localDate = LocalDate.parse(date);
     	LocalTime localTime = LocalTime.parse(stringTime);
