@@ -43,9 +43,6 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public User loginPOST(@Valid User user, BindingResult result, Model model, HttpSession hSession){
-        /*if(result.hasErrors()){
-            return result.getAllErrors().toString();
-        }*/
         model.addAttribute("hobby",hopbyService.findAllHobby());
         User exists = hopbyService.login(user);
         if(exists != null) {
@@ -54,15 +51,7 @@ public class UserController {
         }
         
         return null;
-/*
-        if(exists != null){
-            hSession.setAttribute("LoggedInUser", user);
-            System.out.println("LOGIN SESSION: " + hSession.getAttribute("LoggedInUser"));
-            model.addAttribute("error","");
-            return "HobbyOverview";
-        }
-        model.addAttribute("error", "wrong");
-        return "LoginPage";*/
+
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -89,10 +78,8 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value= "/users", method = RequestMethod.GET)
-    public List<User> usersGET(Model model){
-        model.addAttribute("users", hopbyService.findAll());
-        
+    @RequestMapping(value= "/users", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
+    public List<User> usersGET(Model model){        
         return hopbyService.findAll();
     }
 
