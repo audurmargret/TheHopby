@@ -33,20 +33,8 @@ public class SessionController {
         hopbyService = hService;
     }
 
-    @RequestMapping(value="/hobby/addSession", method = RequestMethod.GET)
-    public String addSessionForm(Model model, HttpSession hSession){
-        User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
-        if(loggedInUser == null ){
-            return "redirect:/";
-        }
-        model.addAttribute("sessions", new Session());
 
-
-        return "AddSession";
-    }
-
-
-    @RequestMapping(value = "/hobby/addSession", method = RequestMethod.POST)
+    @RequestMapping(value = "/hobby/addSession", method = RequestMethod.POST, produces="application/json;charset=UTF-8")
     public Session addHobby(String title, String date, int time, int slots, int hobbyId, String description, String location, String username) {
 
     	String stringTime = Integer.toString(time);
@@ -61,36 +49,23 @@ public class SessionController {
     	return newSession;
     }
 
-    @RequestMapping(value = "/openSession/{id}", method = RequestMethod.GET)
-    public Session openSession(@PathVariable("id") long id, HttpSession hSession, Model model) {
+    @RequestMapping(value = "/openSession/{id}", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
+    public Session openSession(@PathVariable("id") long id) {
 
         Session session = hopbyService.findSessionById(id);
         return session;
     }
 
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public String deleteSession(@PathVariable("id") long id, HttpSession hSession, Model model) {
-        /*User loggedInUser = (User) hSession.getAttribute("LoggedInUser");
-        if(loggedInUser == null ){
-            return "redirect:/";
-        }
-*/
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces="application/json;charset=UTF-8")
+    public String deleteSession(@PathVariable("id") long id) {
+
         hopbyService.delete(hopbyService.findSessionById(id));
-        model.addAttribute("sessions", hopbyService.findAllSession());
         return "SessionOverview";
     }
+        
     
-    @RequestMapping(value="/deleteAll/{id}", method = RequestMethod.DELETE)
-    public String deleteAllSession(@PathVariable("id") long id) {
-    	for (int i =  0; i<id; i++) {
-    		hopbyService.delete(hopbyService.findSessionById(id+1));
-    	}
-    	return "Success";
-    }
-    
-    
-    @RequestMapping(value = "/joinSession/{id}/{username}", method = RequestMethod.GET)
+    @RequestMapping(value = "/joinSession/{id}/{username}", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
     public Session joinSessionREST(@PathVariable("id") long id, @PathVariable("username") String username) {
 
     	User user = hopbyService.findByUserName(username);
@@ -100,8 +75,8 @@ public class SessionController {
         return session;
     }
 
-    @RequestMapping(value= "/leaveSession/{id}/{username}", method = RequestMethod.GET)
-    public Session leaveSession(@PathVariable("id") long id, @PathVariable("username") String username, HttpSession hSession, Model model) {
+    @RequestMapping(value= "/leaveSession/{id}/{username}", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
+    public Session leaveSession(@PathVariable("id") long id, @PathVariable("username") String username) {
     	
         hopbyService.leaveSession(id, hopbyService.findByUserName(username));
 

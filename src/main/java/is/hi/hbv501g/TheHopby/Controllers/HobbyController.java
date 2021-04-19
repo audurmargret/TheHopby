@@ -30,28 +30,27 @@ public class HobbyController {
     @RequestMapping("/")
     public String index(Model model) {
 
-        return "Index";
+        return "Hopby REST";
     }
 
-    @RequestMapping("/home")
-    public List<Hobby> home(Model model, HttpSession hSession){
+    @RequestMapping(value="/home", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
+    public List<Hobby> home(){
         return hopbyService.findAllHobby();
     }
 
 
-    @RequestMapping(value = "/hobby/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/hobby/{id}", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
     public List<Session> goToSessions(@PathVariable("id") long id, HttpSession hSession, Model model) {
         return hopbyService.findSessionByHobby(id);
-
     }
 
     
-    @RequestMapping(value="/hobby/all", method = RequestMethod.GET)
+    @RequestMapping(value="/hobby/all", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
     public List<Session> goToAllSessions(Model model, HttpSession hSession){
         return hopbyService.findAllSession();
     }
     
-    @RequestMapping(value="/mySessions/{username}", method = RequestMethod.GET)
+    @RequestMapping(value="/mySessions/{username}", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
     public List<Session> getMySessions(@PathVariable("username") String username) {
     	return hopbyService.findMySessions(username);
     }

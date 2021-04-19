@@ -28,12 +28,8 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginGET(User user){
-        return "LoginPage";
-    }
 
-    @RequestMapping(value = "/deleteUser/{username}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deleteUser/{username}", method = RequestMethod.DELETE, produces="application/json;charset=UTF-8")
     public String deleteSession(@PathVariable("username") String username, HttpSession hSession, Model model) {
         
         hopbyService.delete(hopbyService.findByUserName(username));
@@ -41,40 +37,10 @@ public class UserController {
     }
     
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public User loginPOST(@Valid User user, BindingResult result, Model model, HttpSession hSession){
-        model.addAttribute("hobby",hopbyService.findAllHobby());
-        User exists = hopbyService.login(user);
-        if(exists != null) {
-        	System.out.print(exists.getUserName());
-        	return exists;        	
-        }
-        
-        return null;
-
-    }
-
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(Model model, HttpSession hSession){
-        if(hSession == null) {
-            return "redirect:/";
-        }
-        hSession.removeAttribute("LoggedInUser");
-        return "redirect:/";
-
-    }
-
-    @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    public String signupGET(User user) {
-        return "SignupPage";
-    }
-
-
-    @RequestMapping(value="/signup", method = RequestMethod.POST)
+    @RequestMapping(value="/signup", method = RequestMethod.POST, produces="application/json;charset=UTF-8")
     public User signupPOST(String name, String userName, String password){
     	User user = new User(userName, password, name);
         hopbyService.save(user);
-
         return user;
     }
 
@@ -83,17 +49,6 @@ public class UserController {
         return hopbyService.findAll();
     }
 
-    @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
-    public String loggedinGET(HttpSession session, Model model){
-        model.addAttribute("movies",hopbyService.findAll());
-        User sessionUser = (User) session.getAttribute("LoggedInUser");
-        System.out.println("LOGGED IN: " + sessionUser);
-        if(sessionUser  != null){
-            model.addAttribute("loggedinuser", sessionUser);
-            return "loggedInUser";
-        }
-        return "redirect:/";
-    }
 }
 
 
