@@ -48,6 +48,13 @@ public class UserController {
     public List<User> usersGET(Model model){        
         return hopbyService.findAll();
     }
+    
+    @RequestMapping(value= "/user/{username}", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
+    public User getUserByUsername(@PathVariable ("username") String username) {
+    	User user = hopbyService.findByUserName(username);
+    	return user;
+    	
+    }
 
 }
 
