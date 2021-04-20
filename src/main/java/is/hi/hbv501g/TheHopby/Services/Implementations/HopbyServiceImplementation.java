@@ -167,17 +167,9 @@ public class HopbyServiceImplementation implements HopbyService {
 
 
 	public List<Session> findMySessions(String username) {
-		List<Session> mySessions = new ArrayList<Session>();
+
+		List<Session> mySessions = sessionRepository.findMySessions(username);
 		
-		List<MySessions> mySessionsId = sessionRepository.findMySessions(username);
-		
-		for(int i =0; i<mySessionsId.size(); i++) {
-			System.out.println(mySessionsId.get(i));
-			long id = mySessionsId.get(i).getSession();
-			Session session = sessionRepository.findSessionById(id);
-			mySessions.add(session);
-			
-		}
 		
 		return mySessions;
 	}
