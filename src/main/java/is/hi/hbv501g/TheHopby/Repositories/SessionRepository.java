@@ -29,6 +29,11 @@ public interface SessionRepository extends JpaRepository<Session, Long> {
     
     @Query(value ="SELECT p FROM Session p WHERE (p.date > CURRENT_DATE OR p.date = CURRENT_DATE) AND p.id IN (SELECT q.session_id FROM MySessions q WHERE q.users_user_name = ?1) ORDER BY p.date, p.time ASC")
     List<Session> findMySessions(String username);
+    
+    @Query(value="SELECT p.session_id FROM MySessions p WHERE (p.users_user_name = ?1) AND (p.notification = ?2)")
+    List<Long> getSessionsWithNotifications(String username, boolean notification);
+    
+    
 
 
 

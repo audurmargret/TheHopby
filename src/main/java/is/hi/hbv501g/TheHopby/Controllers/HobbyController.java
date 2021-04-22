@@ -54,6 +54,12 @@ public class HobbyController {
     public List<Session> getMySessions(@PathVariable("username") String username) {
     	return hopbyService.findMySessions(username);
     }
+    
+    @RequestMapping(value = "/getSessionsWithNotification/{username}", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
+    public List<Long> getSessionsWithNotification(@PathVariable("username") String username) {
+    	
+    	return hopbyService.getSessionsWithNotification(username);
+    }
 
 
 }

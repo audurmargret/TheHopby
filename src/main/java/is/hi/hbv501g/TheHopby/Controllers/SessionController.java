@@ -89,7 +89,7 @@ public class SessionController {
 
 
     }
-
+    
     public boolean userInSession(User user, Session session){
         for (int i=0; i<session.getUsers().size();i++){
             if(session.getUsers().get(i).getUserName().equals(user.getUserName())){

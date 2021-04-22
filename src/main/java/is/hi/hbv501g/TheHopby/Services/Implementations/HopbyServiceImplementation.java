@@ -173,4 +173,11 @@ public class HopbyServiceImplementation implements HopbyService {
 		
 		return mySessions;
 	}
+
+
+	@Override
+	public List<Long> getSessionsWithNotification(String username) {
+		List<Long> sessionsIdWithNotification = sessionRepository.getSessionsWithNotifications(username, true);
+		return sessionsIdWithNotification;
+	}
 }
